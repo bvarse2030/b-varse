@@ -1,10 +1,7 @@
-import { NextResponse } from 'next/server';
-
-export const formatResponse = (data: unknown, message: string, status: number) => {
-  const ok = status >= 200 && status < 300;
-  return NextResponse.json({ ok, data, message, status_code: status }, { status });
-};
-
+// ! ./route.ts
+// you can only GET, POST, PUT, DELETE, PATCH, OPTIONS and HEAD function.
+// you can not use utils and other functions from here
+import { formatResponse } from './apiUtils';
 // ! GET
 // http://localhost:3000/api/health/main?q=abc&limit=100&page=40&role=admin
 export async function GET(req: Request) {
@@ -28,11 +25,12 @@ export async function GET(req: Request) {
       data: [],
     };
 
-    return formatResponse(responseData, 'Data retrieved successfully via GET', 200);
+    return formatResponse(JSON.stringify(responseData), 'Data retrieved successfully via GET', 200);
   } catch (error) {
     console.error('GET Error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    return formatResponse({ error: errorMessage }, 'Error processing GET request', 500);
+
+    return formatResponse(JSON.stringify({ error: errorMessage }), 'Error processing GET request', 500);
   }
 }
 
@@ -45,10 +43,14 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error('POST Error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Invalid request body';
-    if (errorMessage.includes('Unexpected end of JSON input') || errorMessage.includes('missing request body')) {
-      return formatResponse({ error: 'Request body is missing or empty.' }, 'Failed to parse request body', 400);
+
+    if (error instanceof SyntaxError) {
+      return formatResponse(JSON.stringify({ error: 'Invalid JSON format in request body.' }), 'Failed to parse request body', 400);
     }
-    return formatResponse({ error: 'Invalid JSON body or missing Content-Type header.' }, 'Failed to parse request body', 400);
+    if (errorMessage.includes('Unexpected end of JSON input') || errorMessage.includes('missing request body')) {
+      return formatResponse(JSON.stringify({ error: 'Request body is missing or empty.' }), 'Failed to parse request body', 400);
+    }
+    return formatResponse(JSON.stringify({ error: errorMessage }), 'Failed to parse request body or other error', 400);
   }
 }
 
@@ -61,24 +63,40 @@ export async function PUT(req: Request) {
   } catch (error) {
     console.error('PUT Error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Invalid request body';
-    if (errorMessage.includes('Unexpected end of JSON input') || errorMessage.includes('missing request body')) {
-      return formatResponse({ error: 'Request body is missing or empty.' }, 'Failed to parse request body', 400);
+
+    if (error instanceof SyntaxError) {
+      return formatResponse(JSON.stringify({ error: 'Invalid JSON format in request body.' }), 'Failed to parse request body', 400);
     }
-    return formatResponse({ error: 'Invalid JSON body or missing Content-Type header.' }, 'Failed to parse request body', 400);
+    if (errorMessage.includes('Unexpected end of JSON input') || errorMessage.includes('missing request body')) {
+      return formatResponse(JSON.stringify({ error: 'Request body is missing or empty.' }), 'Failed to parse request body', 400);
+    }
+    return formatResponse(JSON.stringify({ error: errorMessage }), 'Failed to parse request body or other error', 400);
   }
 }
 
 // !DELETE
-
+//localhost:3000/api/health/main
 export async function DELETE(req: Request) {
   try {
-    const reqData = await req.json();
+    const reqData: { id?: string } = await req.json();
+
+    if (typeof reqData.id === 'undefined') {
+      return formatResponse(JSON.stringify({ error: "Missing 'id' in request body" }), 'Error processing DELETE request: ID missing', 400);
+    }
 
     const responseData = { deletedId: reqData.id, status: 'successfully deleted (simulated)' };
-    return formatResponse(responseData, `Resource with id: ${reqData.id} processed for deletion via DELETE`, 200);
+
+    return formatResponse(JSON.stringify(responseData), `Resource with id: ${reqData.id} processed for deletion via DELETE`, 200);
   } catch (error) {
     console.error('DELETE Error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    return formatResponse({ error: errorMessage }, 'Error processing DELETE request', 500);
+
+    if (error instanceof SyntaxError) {
+      return formatResponse(JSON.stringify({ error: 'Invalid JSON format in request body.' }), 'Failed to parse request body', 400);
+    }
+    if (errorMessage.includes('Unexpected end of JSON input') || errorMessage.includes('missing request body')) {
+      return formatResponse(JSON.stringify({ error: 'Request body is missing or empty.' }), 'Failed to parse request body', 400);
+    }
+    return formatResponse(JSON.stringify({ error: errorMessage }), 'Error processing DELETE request', 500);
   }
 }
