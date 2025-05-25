@@ -1,3 +1,11 @@
+/*
+|-----------------------------------------
+| setting up ApiUtils for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 // ./apiUtils.ts
 import { NextResponse } from 'next/server';
 export const formatResponse = (data: string | object, message: string, status: number) => {

@@ -1,6 +1,15 @@
+/*
+|-----------------------------------------
+| setting up ApiUtils for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
+// ! !!! -->> you can only GET, POST, PUT, DELETE, PATCH, OPTIONS and HEAD function.
+// ! !!! -->> you can not use utils and other functions from here
+
 // ! ./route.ts
-// you can only GET, POST, PUT, DELETE, PATCH, OPTIONS and HEAD function.
-// you can not use utils and other functions from here
 import { formatResponse } from './apiUtils';
 // ! GET
 // http://localhost:3000/api/health/main?q=abc&limit=100&page=40&role=admin
