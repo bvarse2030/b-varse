@@ -6,5 +6,5 @@
  * 5. create mongoose.ts file in lib folder [ensure username & password update]
  * 6. global.d.ts for global variable Type
  * 7. update Network Access from account. [0.0.0.0]
- * 8.
+ * 8. update mongoose .env in vercel environment variable
  * **/
