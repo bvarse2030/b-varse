@@ -32,7 +32,6 @@ const Page = () => {
         });
 
         const responseData = await response.json();
-        console.log(responseData);
         setData(responseData?.data?.posts);
       } catch (error) {
         console.error('Failed to fetch data:', error);

@@ -71,8 +71,6 @@ export async function updateDocking(req: Request) {
   return withDB(async () => {
     try {
       const { id, ...updateData } = await req.json();
-      console.log('id: ', id);
-      console.log('updateData: ', updateData);
       const updatedDocking = await Docking.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
 
       if (!updatedDocking) return formatResponse(false, null, 'Docking not found', 404);

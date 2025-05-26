@@ -7,7 +7,6 @@ export const handleTokenVerify = (req: Request) => {
     return formatResponse(false, null, 'Please provide a token', 430);
   } else if (token) {
     const result = verifyJwt(token);
-    console.log('result : ', result);
     if (result.isValid) {
       return null;
     } else {

@@ -43,7 +43,6 @@ const AddNextComponents: React.FC = () => {
 
   const onChange = (content: string) => {
     setDescriptions(content);
-    console.log(content);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,8 +55,8 @@ const AddNextComponents: React.FC = () => {
         'status' in error && error.data && typeof error.data === 'object' && 'message' in error.data
           ? (error.data as { message: string }).message
           : error instanceof Error
-            ? error.message
-            : 'An unknown error occurred';
+          ? error.message
+          : 'An unknown error occurred';
       if (errorMessage) handleError(errorMessage);
     }
   }, [isError, error]);
@@ -137,12 +136,7 @@ const AddNextComponents: React.FC = () => {
           <Button variant="outline" className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={() => toggleAddModal(false)}>
             Cancel
           </Button>
-          <Button
-            disabled={isLoading}
-            variant="outline"
-            className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
-            onClick={handleaddPosts}
-          >
+          <Button disabled={isLoading} variant="outline" className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={handleaddPosts}>
             Add Posts
           </Button>
         </DialogFooter>

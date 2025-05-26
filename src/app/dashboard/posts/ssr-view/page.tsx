@@ -27,7 +27,6 @@ const Page = async () => {
       });
 
       const responseData = await response.json();
-      console.log(responseData);
       return responseData.data?.posts;
     } catch (error) {
       console.error('Failed to fetch data:', error);

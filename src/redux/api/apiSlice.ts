@@ -18,7 +18,6 @@ export const apiSlice = createApi({
       const token = tokenFromSessionStorage?.replaceAll('"', '');
       const localStorageToken = localStorage.getItem('token')?.replaceAll('"', '');
       const finalToken = localStorageToken || token;
-      console.log('rtk finalToken: ', finalToken);
       if (finalToken) {
         headers.set('authorization', `Bearer ${finalToken}`);
       }

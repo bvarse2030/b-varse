@@ -16,6 +16,8 @@ import { IPosts } from '../api/v1/Model';
 import { useGetPostsQuery } from '../redux/rtk-Api';
 import { usePostsStore } from '../store/Store';
 import { pageLimitArr } from '../store/StoreConstants';
+import { IoReloadCircleOutline } from 'react-icons/io5';
+import { handleSuccess } from './utils';
 
 const ViewTableNextComponents: React.FC = () => {
   const [sortConfig, setSortConfig] = useState<{ key: keyof IPosts; direction: 'asc' | 'desc' } | null>(null);
@@ -42,6 +44,7 @@ const ViewTableNextComponents: React.FC = () => {
     isLoading,
     isError,
     error,
+    refetch,
   } = useGetPostsQuery(
     { q: queryPramsQ, limit: queryPramsLimit, page: queryPramsPage },
     {
@@ -116,10 +119,7 @@ const ViewTableNextComponents: React.FC = () => {
     sortedPostsData.map((Posts: IPosts, index: number) => (
       <TableRow key={(Posts.email as string) || index}>
         <TableCell>
-          <Checkbox
-            onCheckedChange={checked => handleSelectRow(!!checked, Posts)}
-            checked={bulkData.some(item => item.email === Posts.email)}
-          />
+          <Checkbox onCheckedChange={checked => handleSelectRow(!!checked, Posts)} checked={bulkData.some(item => item.email === Posts.email)} />
         </TableCell>
         <TableCell className="font-medium">{(Posts.name as string) || ''}</TableCell>
         <TableCell className="hidden md:table-cell">{(Posts.email as string) || ''}</TableCell>
@@ -127,7 +127,9 @@ const ViewTableNextComponents: React.FC = () => {
         <TableCell className="hidden md:table-cell">{(Posts.alias as string) || ''}</TableCell>
         <TableCell>
           <span
-            className={`px-2 py-1 rounded-full text-xs font-medium ${Posts.role === 'admin' ? 'bg-amber-100 text-amber-700' : Posts.role === 'moderator' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}`}
+            className={`px-2 py-1 rounded-full text-xs font-medium ${
+              Posts.role === 'admin' ? 'bg-amber-100 text-amber-700' : Posts.role === 'moderator' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'
+            }`}
           >
             {(Posts.role as string) || ''}
           </span>
@@ -140,7 +142,9 @@ const ViewTableNextComponents: React.FC = () => {
   if (isLoading) return <LoadingComponent />;
   if (isError) return <ErrorMessageComponent message={error || 'An error occurred'} />;
   if (getAllPostsData.length === 0) return <div className="py-12 text-2xl text-slate-500">Ops! Nothing was found.</div>;
-
+  const handlePopUp = () => {
+    handleSuccess('Reload successful');
+  };
   return (
     <div className="w-full flex flex-col">
       <div className="w-full my-4">
@@ -161,11 +165,22 @@ const ViewTableNextComponents: React.FC = () => {
             <Button
               variant="outline"
               size="sm"
-              className="text-rose-400 hover:text-rose-500 cursor-pointer "
+              className="text-rose-400 hover:text-rose-500 cursor-pointer border-rose-300 hover:border-rose-400"
               onClick={() => toggleBulkDeleteModal(true)}
               disabled={bulkData.length === 0}
             >
               <TrashIcon className="w-4 h-4 mr-1" /> Delete
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-1 bg-green-100 hover:bg-green-200 border-green-300 hover:border-green-400 text-green-400 hover:text-green-500 cursor-pointer "
+              onClick={() => {
+                refetch(), handlePopUp();
+              }}
+              disabled={isLoading}
+            >
+              <IoReloadCircleOutline className="w-4 h-4 mr-1" /> Reload
             </Button>
           </div>
         </div>
@@ -179,7 +194,9 @@ const ViewTableNextComponents: React.FC = () => {
             {['name', 'email', 'passCode', 'alias', 'role', 'createdAt'].map(key => (
               <TableHead
                 key={key}
-                className={`font-bold text-slate-50 cursor-pointer ${key === 'email' || key === 'alias' ? 'hidden md:table-cell' : ''} ${key === 'passCode' || key === 'createdAt' ? 'hidden lg:table-cell' : ''}`}
+                className={`font-bold text-slate-50 cursor-pointer ${key === 'email' || key === 'alias' ? 'hidden md:table-cell' : ''} ${
+                  key === 'passCode' || key === 'createdAt' ? 'hidden lg:table-cell' : ''
+                }`}
                 onClick={() => handleSort(key as keyof IPosts)}
               >
                 {key.charAt(0).toUpperCase() + key.slice(1)} {sortConfig?.key === key && (sortConfig.direction === 'asc' ? '↑' : '↓')}

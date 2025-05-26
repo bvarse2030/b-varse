@@ -54,7 +54,6 @@ const ImageDialog = ({ handleAddImages }: { handleAddImages: (newImage: string) 
         if (!saveResponse.ok) {
           throw new Error('Error! Cannot save the image.');
         }
-        console.log('new upload image url : ', data?.data?.url);
         setAllImages([data?.data?.url, ...allImages]);
         toast.success('Image uploaded successfully!');
         setShowUploadModal(false);

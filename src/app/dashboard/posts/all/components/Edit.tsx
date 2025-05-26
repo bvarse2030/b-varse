@@ -24,7 +24,6 @@ const EditNextComponents: React.FC = () => {
 
   const onChange = (content: string) => {
     setDescriptions(content);
-    console.log(content);
   };
   useEffect(() => {
     if (selectedPosts) {
@@ -71,14 +70,7 @@ const EditNextComponents: React.FC = () => {
               <Label htmlFor="edit-email" className="text-right">
                 Email
               </Label>
-              <Input
-                id="edit-email"
-                name="email"
-                type="email"
-                value={(newPosts.email as string) || ''}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
+              <Input id="edit-email" name="email" type="email" value={(newPosts.email as string) || ''} onChange={handleInputChange} className="col-span-3" />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="edit-passCode" className="text-right">

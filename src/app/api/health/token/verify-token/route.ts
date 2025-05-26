@@ -7,7 +7,6 @@ export async function POST(req: Request) {
       const token = result.token;
       if (token) {
         const result = verifyJwt(token);
-        console.log('result : ', result);
         if (result.isValid) {
           return formatResponse(true, 'token is valid', 'success', 200);
         } else {

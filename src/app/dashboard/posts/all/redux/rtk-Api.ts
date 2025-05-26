@@ -8,7 +8,6 @@
 
 // This file is use for rest api
 import { apiSlice } from '@/redux/api/apiSlice';
-import { IPosts } from '../api/v1/Model';
 import { handleError, handleSuccess } from '../components/utils';
 
 // Use absolute paths with leading slash to ensure consistent behavior
@@ -41,15 +40,6 @@ export const postsApi = apiSlice.injectEndpoints({
         body: newPosts,
       }),
       invalidatesTags: [{ type: 'tagTypePosts' }],
-      async onQueryStarted(arg, { queryFulfilled, dispatch, getState }) {
-        try {
-          const { data }: { data: { data: IPosts; message: string } } = await queryFulfilled;
-          handleSuccess(data.message);
-          dispatch(postsApi.util.invalidateTags([{ type: 'tagTypePosts' }]));
-        } catch (e: unknown) {
-          handleError(e);
-        }
-      },
     }),
     updatePosts: builder.mutation({
       query: ({ id, ...data }) => ({
