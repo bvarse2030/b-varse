@@ -57,7 +57,7 @@ const ViewTableNextComponents: React.FC = () => {
     },
   );
 
-  const getAllUsers_1_000___Data = useMemo(() => getResponseData?.data?.users_1_000___ || [], [getResponseData]);
+  const getAllUsers_1_000___Data = useMemo(() => getResponseData?.data?.users_2_000___ || [], [getResponseData]);
 
   const formatDate = (date?: Date) => (date ? format(date, 'MMM dd, yyyy') : 'N/A');
 
@@ -73,7 +73,7 @@ const ViewTableNextComponents: React.FC = () => {
       return 0;
     });
   }, [getAllUsers_1_000___Data, sortConfig]);
-
+  console.log('sortedUsers_1_000___Data', sortedUsers_1_000___Data);
   const handleSelectAll = (isChecked: boolean) => setBulkData(isChecked ? getAllUsers_1_000___Data : []);
   const handleSelectRow = (isChecked: boolean, Users_1_000___: IUsers_1_000___) =>
     setBulkData(isChecked ? [...bulkData, Users_1_000___] : bulkData.filter(item => item.email !== Users_1_000___.email));

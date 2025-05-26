@@ -42,8 +42,8 @@ export async function getUsers_1_000___(req: Request) {
   await connectRedis();
   const getValue = await getRedisData('myKey');
   if (getValue) {
-    const { users_1_000___, totalUsers_1_000___, page, limit } = JSON.parse(getValue);
-    return formatResponse({ users_1_000___: users_1_000___ || [], total: totalUsers_1_000___, page, limit }, 'Users_1_000___ fetched successfully', 200);
+    const { users_2_000___, totalUsers_1_000___, page, limit } = JSON.parse(getValue);
+    return formatResponse({ users_2_000___: users_2_000___ || [], total: totalUsers_1_000___, page, limit }, 'Users_1_000___ fetched successfully', 200);
   } else {
     return withDB(async () => {
       const url = new URL(req.url);
@@ -66,11 +66,11 @@ export async function getUsers_1_000___(req: Request) {
         };
       }
 
-      const users_1_000___ = await User_3_000___.find(searchFilter).sort({ updatedAt: -1, createdAt: -1 }).skip(skip).limit(limit);
+      const users_2_000___ = await User_3_000___.find(searchFilter).sort({ updatedAt: -1, createdAt: -1 }).skip(skip).limit(limit);
 
       const totalUsers_1_000___ = await User_3_000___.countDocuments(searchFilter);
 
-      return formatResponse({ users_1_000___: users_1_000___ || [], total: totalUsers_1_000___, page, limit }, 'Users_1_000___ fetched successfully', 200);
+      return formatResponse({ users_2_000___: users_2_000___ || [], total: totalUsers_1_000___, page, limit }, 'Users_1_000___ fetched successfully', 200);
     });
   }
 }

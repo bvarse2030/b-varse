@@ -28,7 +28,7 @@ const Page = async () => {
 
       const responseData = await response.json();
       console.log(responseData);
-      return responseData.data?.users_1_000___;
+      return responseData.data?.users_2_000___;
     } catch (error) {
       console.error('Failed to fetch data:', error);
       return [];

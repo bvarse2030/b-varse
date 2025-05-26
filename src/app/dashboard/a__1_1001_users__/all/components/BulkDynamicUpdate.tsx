@@ -23,7 +23,7 @@ const BulkDynamicUpdateNextComponents: React.FC = () => {
       setBulkData([]);
       handleSuccess('Update Successful');
     } catch (error) {
-      console.error('Failed to edit users_1_000___:', error);
+      console.error('Failed to edit users_2_000___:', error);
     }
   };
 
@@ -36,7 +36,7 @@ const BulkDynamicUpdateNextComponents: React.FC = () => {
         {bulkData.length > 0 && (
           <div>
             <p className="pt-2">
-              You are about to update <span className="font-semibold">({bulkData.length})</span> users_1_000___
+              You are about to update <span className="font-semibold">({bulkData.length})</span> users_2_000___
             </p>
             <div className="w-full flex items-center justify-between pt-2">
               <DynamicDataSelect label="Update all data as" newItemTags={newItemTags as string[]} setNewItemTags={setNewItemTags} />
@@ -51,7 +51,7 @@ const BulkDynamicUpdateNextComponents: React.FC = () => {
                   <span>
                     {idx + 1}. {(Users_1_000___.name as string) || ''}
                   </span>
-                  {/* <span className="text-xs mt-0">{Array.isArray(Users_1_000___.dataArr) ? Users_1_000___.dataArr.join(', ') : ''}</span> */}
+                  {/* <span className="text-xs mt-0">{Array.isArray(Users_1_000___.dataArr) ? Users_2_000___.dataArr.join(', ') : ''}</span> */}
                   <span className="text-xs mt-0">{newItemTags.join(', ') || ''}</span>
                 </div>
               </div>

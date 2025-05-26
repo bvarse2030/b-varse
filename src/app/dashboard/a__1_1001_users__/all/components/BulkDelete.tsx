@@ -33,7 +33,7 @@ const BulkDeleteNextComponents: React.FC = () => {
         {bulkData?.length > 0 && (
           <div className="pt-4">
             <p>
-              You are about to delete <span className="font-semibold">({bulkData.length})</span> users_1_000___
+              You are about to delete <span className="font-semibold">({bulkData.length})</span> users_2_000___
             </p>
           </div>
         )}

@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 import { useUsers_1_000___Store } from '../store/Store';
-import { users_1_000___SelectorArr } from '../store/StoreConstants';
+import { users_2_000___SelectorArr } from '../store/StoreConstants';
 import { IUsers_1_000___ } from '../api/v1/Model';
 import { useBulkUpdateUsers_1_000___Mutation } from '../redux/rtk-Api';
 import { handleSuccess } from './utils';
@@ -24,7 +24,7 @@ const BulkEditNextComponents: React.FC = () => {
       setBulkData([]);
       handleSuccess('Edit Successful');
     } catch (error) {
-      console.error('Failed to edit users_1_000___:', error);
+      console.error('Failed to edit users_2_000___:', error);
     }
   };
 
@@ -57,7 +57,7 @@ const BulkEditNextComponents: React.FC = () => {
                       <SelectValue placeholder="Select a role" />
                     </SelectTrigger>
                     <SelectContent className="bg-slate-50">
-                      {users_1_000___SelectorArr?.map((role, index) => (
+                      {users_2_000___SelectorArr?.map((role, index) => (
                         <SelectItem key={role + index} value={role} className="cursor-pointer hover:bg-slate-200">
                           {role}
                         </SelectItem>

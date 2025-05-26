@@ -5,7 +5,7 @@ export interface Users_1_000___Store {
   queryPramsLimit: number;
   queryPramsPage: number;
   queryPramsQ: string;
-  users_1_000___: IUsers_1_000___[];
+  users_2_000___: IUsers_1_000___[];
   selectedUsers_1_000___: IUsers_1_000___ | null;
   newUsers_1_000___: Partial<IUsers_1_000___>;
   isAddModalOpen: boolean;

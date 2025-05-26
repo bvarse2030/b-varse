@@ -10,7 +10,7 @@
 import { apiSlice } from '@/redux/api/apiSlice';
 
 // Use absolute paths with leading slash to ensure consistent behavior
-export const users_1_000___Api = apiSlice.injectEndpoints({
+export const users_2_000___Api = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getUsers_1_000___: builder.query({
       query: ({ page, limit, q }) => {
@@ -76,4 +76,4 @@ export const {
   useBulkUpdateUsers_1_000___Mutation,
   useBulkDeleteUsers_1_000___Mutation,
   useGetUsers_1_000___ByIdQuery,
-} = users_1_000___Api;
+} = users_2_000___Api;

@@ -7,7 +7,7 @@ export const useUsers_1_000___Store = create<Users_1_000___Store>(set => ({
   queryPramsLimit: queryParams.limit,
   queryPramsPage: queryParams.page,
   queryPramsQ: queryParams.q,
-  users_1_000___: [],
+  users_2_000___: [],
   selectedUsers_1_000___: null,
   newUsers_1_000___: baseIUsers_1_000___,
   isBulkEditModalOpen: false,
@@ -23,7 +23,7 @@ export const useUsers_1_000___Store = create<Users_1_000___Store>(set => ({
   setQueryPramsPage: (payload: number) => set({ queryPramsPage: payload }),
   setQueryPramsQ: (payload: string) => set({ queryPramsQ: payload }),
   setBulkData: (bulkData: IUsers_1_000___[]) => set({ bulkData }),
-  setUsers_1_000___: (users_1_000___: IUsers_1_000___[]) => set({ users_1_000___ }),
+  setUsers_1_000___: (users_2_000___: IUsers_1_000___[]) => set({ users_2_000___ }),
   setSelectedUsers_1_000___: Users_1_000___ => set({ selectedUsers_1_000___: Users_1_000___ }),
   setNewUsers_1_000___: Users_1_000___ =>
     set(state => ({

@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { users_1_000___SelectorArr, select_5_000___ } from '../../store/StoreConstants';
+import { users_2_000___SelectorArr, select_5_000___ } from '../../store/StoreConstants';
 
 const user_4_000___Schema = new Schema(
   {
@@ -15,7 +15,7 @@ const user_4_000___Schema = new Schema(
     alias: { type: String, required: true },
     role: {
       type: String,
-      enum: users_1_000___SelectorArr,
+      enum: users_2_000___SelectorArr,
       default: select_5_000___,
     },
     images: [{ type: String }],

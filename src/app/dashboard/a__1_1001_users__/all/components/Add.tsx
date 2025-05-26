@@ -10,7 +10,7 @@ import { useAddUsers_1_000___Mutation } from '../redux/rtk-Api';
 import { useUsers_1_000___Store } from '../store/Store';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-import { defaultUsers_1_000___Data, select_5_000___, ISelect_6_000___, users_1_000___SelectorArr } from '../store/StoreConstants';
+import { defaultUsers_1_000___Data, select_5_000___, ISelect_6_000___, users_2_000___SelectorArr } from '../store/StoreConstants';
 import { formatDuplicateKeyError, handleError, handleSuccess, isApiErrorResponse } from './utils';
 import DataSelect from './DataSelect';
 import ImagesSelect from './ImagesSelect';
@@ -33,8 +33,8 @@ const InputField: React.FC<{
 );
 
 const AddNextComponents: React.FC = () => {
-  const { toggleAddModal, isAddModalOpen, users_1_000___, newUsers_1_000___, setNewUsers_1_000___, setUsers_1_000___ } = useUsers_1_000___Store();
-  const [addUsers_1_000___, { isLoading, isError, error }] = useAddUsers_1_000___Mutation();
+  const { toggleAddModal, isAddModalOpen, users_2_000___, newUsers_1_000___, setNewUsers_1_000___, setUsers_1_000___ } = useUsers_1_000___Store();
+  const [addUsers_1_000___, { isLoading }] = useAddUsers_1_000___Mutation();
 
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
   const [newImages, setNewImages] = useState<string[]>([]);
@@ -56,7 +56,7 @@ const AddNextComponents: React.FC = () => {
   };
 
   const handleaddUsers_1_000___ = async () => {
-    const Users_1_000___ = {
+    const Users_2_000___ = {
       dataArr: newItemTags || [],
       name: newUsers_1_000___.name || '',
       email: newUsers_1_000___.email || '',
@@ -70,8 +70,8 @@ const AddNextComponents: React.FC = () => {
     };
 
     try {
-      const addedUsers_1_000___ = await addUsers_1_000___(Users_1_000___).unwrap(); // Get the returned data
-      setUsers_1_000___([...users_1_000___, addedUsers_1_000___]); // Use the returned data instead of the local `Users_1_000___` object
+      const addedUsers_1_000___ = await addUsers_1_000___(Users_2_000___).unwrap(); // Get the returned data
+      setUsers_1_000___([...users_2_000___, addedUsers_1_000___]); // Use the returned data instead of the local `Users_1_000___` object
       toggleAddModal(false);
       setNewUsers_1_000___(defaultUsers_1_000___Data);
       handleSuccess('Added Successful');
@@ -116,7 +116,7 @@ const AddNextComponents: React.FC = () => {
                   <SelectValue placeholder="Select a role" />
                 </SelectTrigger>
                 <SelectContent className="bg-slate-50">
-                  {users_1_000___SelectorArr?.map((i, index) => (
+                  {users_2_000___SelectorArr?.map((i, index) => (
                     <SelectItem key={i + index} className="cursor-pointer hover:bg-slate-200" value={i}>
                       {i}
                     </SelectItem>
