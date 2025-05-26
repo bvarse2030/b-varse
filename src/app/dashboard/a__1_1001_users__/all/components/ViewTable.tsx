@@ -16,6 +16,8 @@ import { IUsers_1_000___ } from '../api/v1/Model';
 import { useGetUsers_1_000___Query } from '../redux/rtk-Api';
 import { useUsers_1_000___Store } from '../store/Store';
 import { pageLimitArr } from '../store/StoreConstants';
+import { IoReloadCircleOutline } from 'react-icons/io5';
+import { handleSuccess } from './utils';
 
 const ViewTableNextComponents: React.FC = () => {
   const [sortConfig, setSortConfig] = useState<{ key: keyof IUsers_1_000___; direction: 'asc' | 'desc' } | null>(null);
@@ -40,6 +42,7 @@ const ViewTableNextComponents: React.FC = () => {
   const {
     data: getResponseData,
     isLoading,
+    refetch,
     isError,
     error,
   } = useGetUsers_1_000___Query(
@@ -74,7 +77,9 @@ const ViewTableNextComponents: React.FC = () => {
   const handleSelectAll = (isChecked: boolean) => setBulkData(isChecked ? getAllUsers_1_000___Data : []);
   const handleSelectRow = (isChecked: boolean, Users_1_000___: IUsers_1_000___) =>
     setBulkData(isChecked ? [...bulkData, Users_1_000___] : bulkData.filter(item => item.email !== Users_1_000___.email));
-
+  const handlePopUp = () => {
+    handleSuccess('Reload Successful');
+  };
   const renderActions = (Users_1_000___: IUsers_1_000___) => (
     <div className="flex flex-col sm:flex-row gap-2">
       <Button
@@ -172,6 +177,18 @@ const ViewTableNextComponents: React.FC = () => {
               disabled={bulkData.length === 0}
             >
               <TrashIcon className="w-4 h-4 mr-1" /> Delete
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-1 bg-green-100 hover:bg-green-200 border-green-300 hover:border-green-400 text-green-400 hover:text-green-500 cursor-pointer "
+              onClick={() => {
+                refetch();
+                handlePopUp();
+              }}
+              disabled={isLoading}
+            >
+              <IoReloadCircleOutline className="w-4 h-4 mr-1" /> Reload
             </Button>
           </div>
         </div>
