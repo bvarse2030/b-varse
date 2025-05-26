@@ -8,13 +8,11 @@ export const handleSuccess = (message: string) => {
   });
 };
 
-export const handleError = (e: string) => {
-  if (e !== '') {
-    toast.error(e, {
-      toastId: (Math.random() * 1000).toFixed(0),
-      position: 'top-center',
-    });
-  }
+export const handleError = (str: string) => {
+  toast.error(str, {
+    toastId: (Math.random() * 1000).toFixed(0),
+    position: 'top-center',
+  });
 };
 
 export function isApiErrorResponse(error: unknown): error is ApiErrorResponse {

@@ -8,7 +8,7 @@
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const apiSlice = createApi({
-  tagTypes: ['tagTypePosts'],
+  tagTypes: ['tagTypePosts', 'tagTypeUsers_1_000___'],
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.baseURL,

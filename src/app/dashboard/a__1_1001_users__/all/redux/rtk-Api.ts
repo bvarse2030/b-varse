@@ -1,6 +1,6 @@
 /*
 |-----------------------------------------
-| setting up PostsApi for the App
+| setting up Users_1_000___Api for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
 | @copyright: Toufiquer, February, 2024
 |-----------------------------------------
@@ -8,20 +8,21 @@
 
 // This file is use for rest api
 import { apiSlice } from '@/redux/api/apiSlice';
+import { IUsers_1_000___ } from '../api/v1/Model';
 import { handleError, handleSuccess, isApiErrorResponse } from '../components/utils';
 
 // Use absolute paths with leading slash to ensure consistent behavior
-export const postsApi = apiSlice.injectEndpoints({
+export const users_1_000___Api = apiSlice.injectEndpoints({
   endpoints: builder => ({
-    getPosts: builder.query({
+    getUsers_1_000___: builder.query({
       query: ({ page, limit, q }) => {
-        let url = `/dashboard/posts/all/api/v1?page=${page || 1}&limit=${limit || 10}`;
+        let url = `/dashboard/a__1_1001_users__/all/api/v1?page=${page || 1}&limit=${limit || 10}`;
         if (q) {
           url += `&q=${encodeURIComponent(q)}`;
         }
         return url;
       },
-      providesTags: [{ type: 'tagTypePosts', id: 'LIST' }],
+      providesTags: [{ type: 'tagTypeUsers_1_000___', id: 'LIST' }],
       async onQueryStarted() {
         try {
           // You can add any additional logic here
@@ -36,24 +37,39 @@ export const postsApi = apiSlice.injectEndpoints({
         }
       },
     }),
-    getPostsById: builder.query({
-      query: id => `/dashboard/posts/all/api/v1?id=${id}`,
+    getUsers_1_000___ById: builder.query({
+      query: id => `/dashboard/a__1_1001_users__/all/api/v1?id=${id}`,
     }),
-    addPosts: builder.mutation({
-      query: newPosts => ({
-        url: '/dashboard/posts/all/api/v1',
+    addUsers_1_000___: builder.mutation({
+      query: newUsers_1_000___ => ({
+        url: '/dashboard/a__1_1001_users__/all/api/v1',
         method: 'POST',
-        body: newPosts,
+        body: newUsers_1_000___,
       }),
-      invalidatesTags: [{ type: 'tagTypePosts' }],
+      invalidatesTags: [{ type: 'tagTypeUsers_1_000___' }],
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        try {
+          const { data }: { data: { data: IUsers_1_000___; message: string } } = await queryFulfilled;
+          handleSuccess(data.message);
+          dispatch(users_1_000___Api.util.invalidateTags([{ type: 'tagTypeUsers_1_000___' }]));
+        } catch (error: unknown) {
+          let errMessage: string = 'Please try again later and check duplicate data or check input.';
+          if (isApiErrorResponse(error)) {
+            errMessage = error.data.message.toLowerCase().includes('duplicate') ? 'Please provide an unique email' : error.data.message;
+          } else if (error instanceof Error) {
+            errMessage = error.message;
+          }
+          handleError(errMessage);
+        }
+      },
     }),
-    updatePosts: builder.mutation({
+    updateUsers_1_000___: builder.mutation({
       query: ({ id, ...data }) => ({
-        url: `/dashboard/posts/all/api/v1`,
+        url: `/dashboard/a__1_1001_users__/all/api/v1`,
         method: 'PUT',
         body: { id: id, ...data },
       }),
-      invalidatesTags: [{ type: 'tagTypePosts' }],
+      invalidatesTags: [{ type: 'tagTypeUsers_1_000___' }],
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
           const { data }: { data: { message: string } } = await queryFulfilled;
@@ -69,13 +85,13 @@ export const postsApi = apiSlice.injectEndpoints({
         }
       },
     }),
-    deletePosts: builder.mutation({
+    deleteUsers_1_000___: builder.mutation({
       query: ({ id }) => ({
-        url: `/dashboard/posts/all/api/v1`,
+        url: `/dashboard/a__1_1001_users__/all/api/v1`,
         method: 'DELETE',
         body: { id },
       }),
-      invalidatesTags: [{ type: 'tagTypePosts' }],
+      invalidatesTags: [{ type: 'tagTypeUsers_1_000___' }],
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
           const { data }: { data: { message: string } } = await queryFulfilled;
@@ -91,13 +107,13 @@ export const postsApi = apiSlice.injectEndpoints({
         }
       },
     }),
-    bulkUpdatePosts: builder.mutation({
+    bulkUpdateUsers_1_000___: builder.mutation({
       query: bulkData => ({
-        url: `/dashboard/posts/all/api/v1?bulk=true`,
+        url: `/dashboard/a__1_1001_users__/all/api/v1?bulk=true`,
         method: 'PUT',
         body: bulkData,
       }),
-      invalidatesTags: [{ type: 'tagTypePosts' }],
+      invalidatesTags: [{ type: 'tagTypeUsers_1_000___' }],
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
           const { data }: { data: { message: string } } = await queryFulfilled;
@@ -113,13 +129,13 @@ export const postsApi = apiSlice.injectEndpoints({
         }
       },
     }),
-    bulkDeletePosts: builder.mutation({
+    bulkDeleteUsers_1_000___: builder.mutation({
       query: bulkData => ({
-        url: `/dashboard/posts/all/api/v1?bulk=true`,
+        url: `/dashboard/a__1_1001_users__/all/api/v1?bulk=true`,
         method: 'DELETE',
         body: bulkData,
       }),
-      invalidatesTags: [{ type: 'tagTypePosts' }],
+      invalidatesTags: [{ type: 'tagTypeUsers_1_000___' }],
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
           const { data }: { data: { message: string } } = await queryFulfilled;
@@ -139,11 +155,11 @@ export const postsApi = apiSlice.injectEndpoints({
 });
 
 export const {
-  useGetPostsQuery,
-  useAddPostsMutation,
-  useUpdatePostsMutation,
-  useDeletePostsMutation,
-  useBulkUpdatePostsMutation,
-  useBulkDeletePostsMutation,
-  useGetPostsByIdQuery,
-} = postsApi;
+  useGetUsers_1_000___Query,
+  useAddUsers_1_000___Mutation,
+  useUpdateUsers_1_000___Mutation,
+  useDeleteUsers_1_000___Mutation,
+  useBulkUpdateUsers_1_000___Mutation,
+  useBulkDeleteUsers_1_000___Mutation,
+  useGetUsers_1_000___ByIdQuery,
+} = users_1_000___Api;

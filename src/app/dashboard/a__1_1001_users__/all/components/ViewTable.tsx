@@ -12,17 +12,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 
 import Pagination from './Pagination';
-import { IPosts } from '../api/v1/Model';
-import { useGetPostsQuery } from '../redux/rtk-Api';
-import { usePostsStore } from '../store/Store';
+import { IUsers_1_000___ } from '../api/v1/Model';
+import { useGetUsers_1_000___Query } from '../redux/rtk-Api';
+import { useUsers_1_000___Store } from '../store/Store';
 import { pageLimitArr } from '../store/StoreConstants';
-import { IoReloadCircleOutline } from 'react-icons/io5';
-import { handleSuccess } from './utils';
 
 const ViewTableNextComponents: React.FC = () => {
-  const [sortConfig, setSortConfig] = useState<{ key: keyof IPosts; direction: 'asc' | 'desc' } | null>(null);
+  const [sortConfig, setSortConfig] = useState<{ key: keyof IUsers_1_000___; direction: 'asc' | 'desc' } | null>(null);
   const {
-    setSelectedPosts,
+    setSelectedUsers_1_000___,
     toggleBulkEditModal,
     toggleBulkUpdateModal,
     toggleViewModal,
@@ -37,15 +35,14 @@ const ViewTableNextComponents: React.FC = () => {
     setQueryPramsLimit,
     setQueryPramsPage,
     toggleBulkDeleteModal,
-  } = usePostsStore();
+  } = useUsers_1_000___Store();
 
   const {
     data: getResponseData,
     isLoading,
     isError,
     error,
-    refetch,
-  } = useGetPostsQuery(
+  } = useGetUsers_1_000___Query(
     { q: queryPramsQ, limit: queryPramsLimit, page: queryPramsPage },
     {
       selectFromResult: ({ data, isError, error, isLoading }) => ({
@@ -57,35 +54,35 @@ const ViewTableNextComponents: React.FC = () => {
     },
   );
 
-  const getAllPostsData = useMemo(() => getResponseData?.data?.posts || [], [getResponseData]);
+  const getAllUsers_1_000___Data = useMemo(() => getResponseData?.data?.users_1_000___ || [], [getResponseData]);
 
   const formatDate = (date?: Date) => (date ? format(date, 'MMM dd, yyyy') : 'N/A');
 
-  const handleSort = (key: keyof IPosts) => {
+  const handleSort = (key: keyof IUsers_1_000___) => {
     setSortConfig(prev => (prev?.key === key ? { key, direction: prev.direction === 'asc' ? 'desc' : 'asc' } : { key, direction: 'asc' }));
   };
 
-  const sortedPostsData = useMemo(() => {
-    if (!sortConfig) return getAllPostsData;
-    return [...getAllPostsData].sort((a, b) => {
+  const sortedUsers_1_000___Data = useMemo(() => {
+    if (!sortConfig) return getAllUsers_1_000___Data;
+    return [...getAllUsers_1_000___Data].sort((a, b) => {
       if (a[sortConfig.key] < b[sortConfig.key]) return sortConfig.direction === 'asc' ? -1 : 1;
       if (a[sortConfig.key] > b[sortConfig.key]) return sortConfig.direction === 'asc' ? 1 : -1;
       return 0;
     });
-  }, [getAllPostsData, sortConfig]);
+  }, [getAllUsers_1_000___Data, sortConfig]);
 
-  const handleSelectAll = (isChecked: boolean) => setBulkData(isChecked ? getAllPostsData : []);
-  const handleSelectRow = (isChecked: boolean, Posts: IPosts) =>
-    setBulkData(isChecked ? [...bulkData, Posts] : bulkData.filter(item => item.email !== Posts.email));
+  const handleSelectAll = (isChecked: boolean) => setBulkData(isChecked ? getAllUsers_1_000___Data : []);
+  const handleSelectRow = (isChecked: boolean, Users_1_000___: IUsers_1_000___) =>
+    setBulkData(isChecked ? [...bulkData, Users_1_000___] : bulkData.filter(item => item.email !== Users_1_000___.email));
 
-  const renderActions = (Posts: IPosts) => (
+  const renderActions = (Users_1_000___: IUsers_1_000___) => (
     <div className="flex flex-col sm:flex-row gap-2">
       <Button
         className="cursor-pointer "
         variant="outline"
         size="sm"
         onClick={() => {
-          setSelectedPosts(Posts);
+          setSelectedUsers_1_000___(Users_1_000___);
           toggleViewModal(true);
         }}
       >
@@ -96,7 +93,7 @@ const ViewTableNextComponents: React.FC = () => {
         variant="outline"
         size="sm"
         onClick={() => {
-          setSelectedPosts(Posts);
+          setSelectedUsers_1_000___(Users_1_000___);
           toggleEditModal(true);
         }}
       >
@@ -107,7 +104,7 @@ const ViewTableNextComponents: React.FC = () => {
         size="sm"
         className="text-rose-400 hover:text-rose-500 cursor-pointer "
         onClick={() => {
-          setSelectedPosts(Posts);
+          setSelectedUsers_1_000___(Users_1_000___);
           toggleDeleteModal(true);
         }}
       >
@@ -116,35 +113,40 @@ const ViewTableNextComponents: React.FC = () => {
     </div>
   );
   const renderTableRows = () =>
-    sortedPostsData.map((Posts: IPosts, index: number) => (
-      <TableRow key={(Posts.email as string) || index}>
+    sortedUsers_1_000___Data.map((Users_1_000___: IUsers_1_000___, index: number) => (
+      <TableRow key={(Users_1_000___.email as string) || index}>
         <TableCell>
-          <Checkbox onCheckedChange={checked => handleSelectRow(!!checked, Posts)} checked={bulkData.some(item => item.email === Posts.email)} />
+          <Checkbox
+            onCheckedChange={checked => handleSelectRow(!!checked, Users_1_000___)}
+            checked={bulkData.some(item => item.email === Users_1_000___.email)}
+          />
         </TableCell>
-        <TableCell className="font-medium">{(Posts.name as string) || ''}</TableCell>
-        <TableCell className="hidden md:table-cell">{(Posts.email as string) || ''}</TableCell>
-        <TableCell className="hidden lg:table-cell">{(Posts.passCode as string) || ''}</TableCell>
-        <TableCell className="hidden md:table-cell">{(Posts.alias as string) || ''}</TableCell>
+        <TableCell className="font-medium">{(Users_1_000___.name as string) || ''}</TableCell>
+        <TableCell className="hidden md:table-cell">{(Users_1_000___.email as string) || ''}</TableCell>
+        <TableCell className="hidden lg:table-cell">{(Users_1_000___.passCode as string) || ''}</TableCell>
+        <TableCell className="hidden md:table-cell">{(Users_1_000___.alias as string) || ''}</TableCell>
         <TableCell>
           <span
             className={`px-2 py-1 rounded-full text-xs font-medium ${
-              Posts.role === 'admin' ? 'bg-amber-100 text-amber-700' : Posts.role === 'moderator' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'
+              Users_1_000___.role === 'admin'
+                ? 'bg-amber-100 text-amber-700'
+                : Users_1_000___.role === 'moderator'
+                ? 'bg-blue-100 text-blue-700'
+                : 'bg-green-100 text-green-700'
             }`}
           >
-            {(Posts.role as string) || ''}
+            {(Users_1_000___.role as string) || ''}
           </span>
         </TableCell>
-        <TableCell className="hidden lg:table-cell">{formatDate(Posts.createdAt)}</TableCell>
-        <TableCell className="justify-end flex">{renderActions(Posts)}</TableCell>
+        <TableCell className="hidden lg:table-cell">{formatDate(Users_1_000___.createdAt)}</TableCell>
+        <TableCell className="justify-end flex">{renderActions(Users_1_000___)}</TableCell>
       </TableRow>
     ));
 
   if (isLoading) return <LoadingComponent />;
   if (isError) return <ErrorMessageComponent message={error || 'An error occurred'} />;
-  if (getAllPostsData.length === 0) return <div className="py-12 text-2xl text-slate-500">Ops! Nothing was found.</div>;
-  const handlePopUp = () => {
-    handleSuccess('Reload successful');
-  };
+  if (getAllUsers_1_000___Data.length === 0) return <div className="py-12 text-2xl text-slate-500">Ops! Nothing was found.</div>;
+
   return (
     <div className="w-full flex flex-col">
       <div className="w-full my-4">
@@ -165,23 +167,11 @@ const ViewTableNextComponents: React.FC = () => {
             <Button
               variant="outline"
               size="sm"
-              className="text-rose-400 hover:text-rose-500 cursor-pointer border-rose-300 hover:border-rose-400"
+              className="text-rose-400 hover:text-rose-500 cursor-pointer "
               onClick={() => toggleBulkDeleteModal(true)}
               disabled={bulkData.length === 0}
             >
               <TrashIcon className="w-4 h-4 mr-1" /> Delete
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-1 bg-green-100 hover:bg-green-200 border-green-300 hover:border-green-400 text-green-400 hover:text-green-500 cursor-pointer "
-              onClick={() => {
-                refetch();
-                handlePopUp();
-              }}
-              disabled={isLoading}
-            >
-              <IoReloadCircleOutline className="w-4 h-4 mr-1" /> Reload
             </Button>
           </div>
         </div>
@@ -190,7 +180,7 @@ const ViewTableNextComponents: React.FC = () => {
         <TableHeader className="bg-slate-600 text-slate-50 rounded overflow-hidden border-1 border-slate-600">
           <TableRow>
             <TableHead>
-              <Checkbox onCheckedChange={checked => handleSelectAll(!!checked)} checked={bulkData.length === getAllPostsData.length} />
+              <Checkbox onCheckedChange={checked => handleSelectAll(!!checked)} checked={bulkData.length === getAllUsers_1_000___Data.length} />
             </TableHead>
             {['name', 'email', 'passCode', 'alias', 'role', 'createdAt'].map(key => (
               <TableHead
@@ -198,7 +188,7 @@ const ViewTableNextComponents: React.FC = () => {
                 className={`font-bold text-slate-50 cursor-pointer ${key === 'email' || key === 'alias' ? 'hidden md:table-cell' : ''} ${
                   key === 'passCode' || key === 'createdAt' ? 'hidden lg:table-cell' : ''
                 }`}
-                onClick={() => handleSort(key as keyof IPosts)}
+                onClick={() => handleSort(key as keyof IUsers_1_000___)}
               >
                 {key.charAt(0).toUpperCase() + key.slice(1)} {sortConfig?.key === key && (sortConfig.direction === 'asc' ? '↑' : '↓')}
               </TableHead>
@@ -216,7 +206,7 @@ const ViewTableNextComponents: React.FC = () => {
       />
       <div className="max-w-[380px] flex items-center justify-between pl-2 gap-4 border-1 border-slate-200 rounded-xl w-full mx-auto mt-8">
         <Label htmlFor="set-limit" className="text-right text-slate-500 font-thin pl-2">
-          Posts per page
+          Users_1_000___ per page
         </Label>
         <Select
           onValueChange={value => {

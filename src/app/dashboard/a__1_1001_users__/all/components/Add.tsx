@@ -5,11 +5,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { useAddPostsMutation } from '../redux/rtk-Api';
-import { usePostsStore } from '../store/Store';
+import { useAddUsers_1_000___Mutation } from '../redux/rtk-Api';
+
+import { useUsers_1_000___Store } from '../store/Store';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-import { defaultPostsData, select, ISelect, postsSelectorArr } from '../store/StoreConstants';
+import { defaultUsers_1_000___Data, select_5_000___, ISelect_6_000___, users_1_000___SelectorArr } from '../store/StoreConstants';
 import { handleError, isApiErrorResponse } from './utils';
 import DataSelect from './DataSelect';
 import ImagesSelect from './ImagesSelect';
@@ -32,8 +33,8 @@ const InputField: React.FC<{
 );
 
 const AddNextComponents: React.FC = () => {
-  const { toggleAddModal, isAddModalOpen, posts, newPosts, setnewPosts, setPosts } = usePostsStore();
-  const [addPosts, { isLoading }] = useAddPostsMutation();
+  const { toggleAddModal, isAddModalOpen, users_1_000___, newUsers_1_000___, setnewUsers_1_000___, setUsers_1_000___ } = useUsers_1_000___Store();
+  const [addUsers_1_000___, { isLoading, isError, error }] = useAddUsers_1_000___Mutation();
 
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
   const [newImages, setNewImages] = useState<string[]>([]);
@@ -42,25 +43,36 @@ const AddNextComponents: React.FC = () => {
 
   const onChange = (content: string) => {
     setDescriptions(content);
+    console.log(content);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setnewPosts({ ...newPosts, [name]: value });
+    setnewUsers_1_000___({ ...newUsers_1_000___, [name]: value });
   };
-
+  useEffect(() => {
+    if (isError) {
+      const errorMessage =
+        'status' in error && error.data && typeof error.data === 'object' && 'message' in error.data
+          ? (error.data as { message: string }).message
+          : error instanceof Error
+          ? error.message
+          : 'An unknown error occurred';
+      if (errorMessage) handleError(errorMessage);
+    }
+  }, [isError, error]);
   const handleRoleChange = (value: string) => {
-    setnewPosts({ ...newPosts, role: value as ISelect });
+    setnewUsers_1_000___({ ...newUsers_1_000___, role: value as ISelect_6_000___ });
   };
 
-  const handleaddPosts = async () => {
-    const Posts = {
+  const handleaddUsers_1_000___ = async () => {
+    const Users_1_000___ = {
       dataArr: newItemTags || [],
-      name: newPosts.name || '',
-      email: newPosts.email || '',
-      passCode: newPosts.passCode || '',
-      alias: newPosts.alias || '',
-      role: (newPosts.role as ISelect) || select,
+      name: newUsers_1_000___.name || '',
+      email: newUsers_1_000___.email || '',
+      passCode: newUsers_1_000___.passCode || '',
+      alias: newUsers_1_000___.alias || '',
+      role: (newUsers_1_000___.role as ISelect_6_000___) || select_5_000___,
       images: newImages || [],
       descriptions: descriptions || '',
       createdAt: new Date(),
@@ -68,11 +80,10 @@ const AddNextComponents: React.FC = () => {
     };
 
     try {
-      const addedPosts = await addPosts(Posts).unwrap(); // Get the returned data
-      console.log('Added Posts:', addedPosts);
-      setPosts([...posts, addedPosts]); // Use the returned data instead of the local `Posts` object
+      const addedUsers_1_000___ = await addUsers_1_000___(Users_1_000___).unwrap(); // Get the returned data
+      setUsers_1_000___([...users_1_000___, addedUsers_1_000___]); // Use the returned data instead of the local `Users_1_000___` object
       toggleAddModal(false);
-      setnewPosts(defaultPostsData);
+      setnewUsers_1_000___(defaultUsers_1_000___Data);
     } catch (error: unknown) {
       let errMessage: string = 'Please try again later and check duplicate data or check input.';
       if (isApiErrorResponse(error)) {
@@ -88,32 +99,32 @@ const AddNextComponents: React.FC = () => {
     <Dialog open={isAddModalOpen} onOpenChange={toggleAddModal}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Add New Posts</DialogTitle>
+          <DialogTitle>Add New Users_1_000___</DialogTitle>
         </DialogHeader>
 
         <ScrollArea className="h-[400px] w-full rounded-md border p-4">
           <div className="grid gap-4 py-4">
-            <InputField id="name" name="name" label="Name" value={(newPosts.name as string) || ''} onChange={handleInputChange} />
-            <InputField id="email" name="email" label="Email" type="email" value={(newPosts.email as string) || ''} onChange={handleInputChange} />
+            <InputField id="name" name="name" label="Name" value={(newUsers_1_000___.name as string) || ''} onChange={handleInputChange} />
+            <InputField id="email" name="email" label="Email" type="email" value={(newUsers_1_000___.email as string) || ''} onChange={handleInputChange} />
             <InputField
               id="passCode"
               name="passCode"
               label="Pass Code"
               type="password"
-              value={(newPosts.passCode as string) || ''}
+              value={(newUsers_1_000___.passCode as string) || ''}
               onChange={handleInputChange}
             />
-            <InputField id="alias" name="alias" label="Alias" value={(newPosts.alias as string) || ''} onChange={handleInputChange} />
+            <InputField id="alias" name="alias" label="Alias" value={(newUsers_1_000___.alias as string) || ''} onChange={handleInputChange} />
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="role" className="text-right">
                 Role
               </Label>
-              <Select onValueChange={handleRoleChange} defaultValue={(newPosts.role as string) || ''}>
+              <Select onValueChange={handleRoleChange} defaultValue={(newUsers_1_000___.role as string) || ''}>
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select a role" />
                 </SelectTrigger>
                 <SelectContent className="bg-slate-50">
-                  {postsSelectorArr?.map((i, index) => (
+                  {users_1_000___SelectorArr?.map((i, index) => (
                     <SelectItem key={i + index} className="cursor-pointer hover:bg-slate-200" value={i}>
                       {i}
                     </SelectItem>
@@ -132,8 +143,13 @@ const AddNextComponents: React.FC = () => {
           <Button variant="outline" className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={() => toggleAddModal(false)}>
             Cancel
           </Button>
-          <Button disabled={isLoading} variant="outline" className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={handleaddPosts}>
-            Add Posts
+          <Button
+            disabled={isLoading}
+            variant="outline"
+            className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
+            onClick={handleaddUsers_1_000___}
+          >
+            Add Users_1_000___
           </Button>
         </DialogFooter>
       </DialogContent>
