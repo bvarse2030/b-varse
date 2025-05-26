@@ -13,7 +13,6 @@
 import { formatResponse } from './apiUtils';
 import { handleRateLimit } from './rate-limit';
 // ! GET
-// http://localhost:3000/api/health/main?q=abc&limit=100&page=40&role=admin
 export async function GET(req: Request) {
   try {
     const rateLimitResponse = handleRateLimit(req);
@@ -47,7 +46,6 @@ export async function GET(req: Request) {
 }
 
 // ! POST
-// localhost:3000/api/health/main
 export async function POST(req: Request) {
   try {
     const rateLimitResponse = handleRateLimit(req);
@@ -69,7 +67,6 @@ export async function POST(req: Request) {
 }
 
 // ! PUT
-//localhost:3000/api/health/main
 export async function PUT(req: Request) {
   try {
     const rateLimitResponse = handleRateLimit(req);
@@ -91,7 +88,6 @@ export async function PUT(req: Request) {
 }
 
 // !DELETE
-//localhost:3000/api/health/main
 export async function DELETE(req: Request) {
   try {
     const rateLimitResponse = handleRateLimit(req);

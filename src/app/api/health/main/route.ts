@@ -12,7 +12,6 @@
 // ! ./route.ts
 import { formatResponse } from './apiUtils';
 // ! GET
-// http://localhost:3000/api/health/main?q=abc&limit=100&page=40&role=admin
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
@@ -44,7 +43,6 @@ export async function GET(req: Request) {
 }
 
 // ! POST
-// localhost:3000/api/health/main
 export async function POST(req: Request) {
   try {
     const reqData = await req.json();
@@ -64,7 +62,6 @@ export async function POST(req: Request) {
 }
 
 // ! PUT
-//localhost:3000/api/health/main
 export async function PUT(req: Request) {
   try {
     const reqData = await req.json();
@@ -84,7 +81,6 @@ export async function PUT(req: Request) {
 }
 
 // !DELETE
-//localhost:3000/api/health/main
 export async function DELETE(req: Request) {
   try {
     const reqData: { id?: string } = await req.json();

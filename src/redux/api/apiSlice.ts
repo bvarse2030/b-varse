@@ -11,7 +11,7 @@ export const apiSlice = createApi({
   tagTypes: ['tagTypePosts', 'tagTypeUsers_1_000___'],
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.baseURL,
+    baseUrl: process.env.NODE_ENV === 'production' ? process.env.baseLiveURL : process.env.baseLocalURL,
     credentials: 'include', // Include credentials for cross-origin requests
     prepareHeaders: async (headers, {}) => {
       const tokenFromSessionStorage = sessionStorage.getItem(process.env.NEXTAUTH_SECRET || '_');
