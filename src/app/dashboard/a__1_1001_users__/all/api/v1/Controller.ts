@@ -40,7 +40,7 @@ export async function getUser_3_000___ById(req: Request) {
 // GET all Users_1_000___ with pagination
 export async function getUsers_1_000___(req: Request) {
   await connectRedis();
-  const getValue = await getRedisData('myKey');
+  const getValue = await getRedisData('users_2_000___');
   if (getValue) {
     const { users_2_000___, totalUsers_1_000___, page, limit } = JSON.parse(getValue);
     return formatResponse({ users_2_000___: users_2_000___ || [], total: totalUsers_1_000___, page, limit }, 'Users_1_000___ fetched successfully', 200);
