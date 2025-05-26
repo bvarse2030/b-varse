@@ -107,7 +107,7 @@ const ViewTableNextComponents: React.FC = () => {
       <Button
         variant="outline"
         size="sm"
-        className="text-rose-400 hover:text-rose-500 cursor-pointer "
+        className="text-rose-400 hover:text-rose-500 cursor-pointer bg-rose-100 hover:bg-rose-200 border-1 border-rose-300 hover:border-rose-400 "
         onClick={() => {
           setSelectedUsers_1_000___(Users_1_000___);
           toggleDeleteModal(true);
@@ -136,7 +136,7 @@ const ViewTableNextComponents: React.FC = () => {
               Users_1_000___.role === 'admin'
                 ? 'bg-amber-100 text-amber-700'
                 : Users_1_000___.role === 'moderator'
-                ? 'bg-blue-100 text-blue-700'
+                ? 'bg-green-100 text-green-700'
                 : 'bg-green-100 text-green-700'
             }`}
           >
@@ -164,7 +164,7 @@ const ViewTableNextComponents: React.FC = () => {
               <PencilIcon className="w-4 h-4 mr-1" /> B. Update
             </Button>
             <Button className="cursor-pointer " variant="outline" size="sm" onClick={() => toggleBulkUpdateModal(true)} disabled={bulkData.length === 0}>
-              <PencilIcon className="w-4 h-4 mr-1" /> B. Edit
+              <PencilIcon className="w-4 h-4 mr-1" /> B. Update
             </Button>
             <Button className="cursor-pointer " variant="outline" size="sm" onClick={() => toggleBulkEditModal(true)} disabled={bulkData.length === 0}>
               <PencilIcon className="w-4 h-4 mr-1" /> Edit
@@ -172,7 +172,7 @@ const ViewTableNextComponents: React.FC = () => {
             <Button
               variant="outline"
               size="sm"
-              className="text-rose-400 hover:text-rose-500 cursor-pointer "
+              className="text-rose-400 hover:text-rose-500 cursor-pointer bg-rose-100 hover:bg-rose-200 border-1 border-rose-300 hover:border-rose-400 "
               onClick={() => toggleBulkDeleteModal(true)}
               disabled={bulkData.length === 0}
             >

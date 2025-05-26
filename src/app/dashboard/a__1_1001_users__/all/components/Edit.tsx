@@ -14,11 +14,12 @@ import { ISelect_6_000___, users_1_000___SelectorArr, baseIUsers_1_000___ } from
 import DataSelect from './DataSelect';
 import ImagesSelect from './ImagesSelect';
 import RichTextEditor from './rich-text-editor';
+import { formatDuplicateKeyError, handleError, handleSuccess, isApiErrorResponse } from './utils';
 
 const EditNextComponents: React.FC = () => {
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
   const [newImages, setNewImages] = useState<string[]>([]);
-  const { toggleEditModal, isEditModalOpen, newUsers_1_000___, selectedUsers_1_000___, setnewUsers_1_000___, setSelectedUsers_1_000___ } =
+  const { toggleEditModal, isEditModalOpen, newUsers_1_000___, selectedUsers_1_000___, setNewUsers_1_000___, setSelectedUsers_1_000___ } =
     useUsers_1_000___Store();
   const [updateUsers_1_000___] = useUpdateUsers_1_000___Mutation();
   const [descriptions, setDescriptions] = useState('');
@@ -29,17 +30,17 @@ const EditNextComponents: React.FC = () => {
   };
   useEffect(() => {
     if (selectedUsers_1_000___) {
-      setnewUsers_1_000___(selectedUsers_1_000___);
+      setNewUsers_1_000___(selectedUsers_1_000___);
       setNewItemTags(selectedUsers_1_000___.dataArr as string[]);
       setNewImages(selectedUsers_1_000___.images as string[]);
     }
-  }, [selectedUsers_1_000___, setnewUsers_1_000___]);
+  }, [selectedUsers_1_000___, setNewUsers_1_000___]);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setnewUsers_1_000___({ ...newUsers_1_000___, [name]: value });
+    setNewUsers_1_000___({ ...newUsers_1_000___, [name]: value });
   };
   const handleRoleChange = (value: string) => {
-    setnewUsers_1_000___({ ...newUsers_1_000___, role: value as ISelect_6_000___ });
+    setNewUsers_1_000___({ ...newUsers_1_000___, role: value as ISelect_6_000___ });
   };
 
   const handleEditNextComponents = async () => {
@@ -49,8 +50,15 @@ const EditNextComponents: React.FC = () => {
       const updateData = { ...newUsers_1_000___, dataArr: newItemTags, images: newImages };
       await updateUsers_1_000___({ id: selectedUsers_1_000___._id, ...updateData }).unwrap(); // Call RTK mutation
       toggleEditModal(false);
-    } catch (error) {
-      console.error('Failed to update Users_1_000___:', error);
+      handleSuccess('Edit Successful');
+    } catch (error: unknown) {
+      let errMessage: string = '';
+      if (isApiErrorResponse(error)) {
+        errMessage = formatDuplicateKeyError(error.data.message);
+      } else if (error instanceof Error) {
+        errMessage = error.message;
+      }
+      handleError(errMessage);
     }
   };
 
@@ -137,7 +145,10 @@ const EditNextComponents: React.FC = () => {
           >
             Cancel
           </Button>
-          <Button onClick={handleEditNextComponents} className="cursor-pointer border-1 border-slate-400 hover:border-slate-500">
+          <Button
+            onClick={handleEditNextComponents}
+            className="text-green-400 hover:text-green-500 cursor-pointer bg-green-100 hover:bg-green-200 border-1 border-green-300 hover:border-green-400"
+          >
             Save Changes
           </Button>
         </DialogFooter>

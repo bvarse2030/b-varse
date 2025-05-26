@@ -11,7 +11,7 @@ import { useUsers_1_000___Store } from '../store/Store';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 import { defaultUsers_1_000___Data, select_5_000___, ISelect_6_000___, users_1_000___SelectorArr } from '../store/StoreConstants';
-import { handleError, isApiErrorResponse } from './utils';
+import { formatDuplicateKeyError, handleError, handleSuccess, isApiErrorResponse } from './utils';
 import DataSelect from './DataSelect';
 import ImagesSelect from './ImagesSelect';
 import RichTextEditor from './rich-text-editor';
@@ -33,7 +33,7 @@ const InputField: React.FC<{
 );
 
 const AddNextComponents: React.FC = () => {
-  const { toggleAddModal, isAddModalOpen, users_1_000___, newUsers_1_000___, setnewUsers_1_000___, setUsers_1_000___ } = useUsers_1_000___Store();
+  const { toggleAddModal, isAddModalOpen, users_1_000___, newUsers_1_000___, setNewUsers_1_000___, setUsers_1_000___ } = useUsers_1_000___Store();
   const [addUsers_1_000___, { isLoading, isError, error }] = useAddUsers_1_000___Mutation();
 
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
@@ -48,21 +48,11 @@ const AddNextComponents: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setnewUsers_1_000___({ ...newUsers_1_000___, [name]: value });
+    setNewUsers_1_000___({ ...newUsers_1_000___, [name]: value });
   };
-  useEffect(() => {
-    if (isError) {
-      const errorMessage =
-        'status' in error && error.data && typeof error.data === 'object' && 'message' in error.data
-          ? (error.data as { message: string }).message
-          : error instanceof Error
-          ? error.message
-          : 'An unknown error occurred';
-      if (errorMessage) handleError(errorMessage);
-    }
-  }, [isError, error]);
+
   const handleRoleChange = (value: string) => {
-    setnewUsers_1_000___({ ...newUsers_1_000___, role: value as ISelect_6_000___ });
+    setNewUsers_1_000___({ ...newUsers_1_000___, role: value as ISelect_6_000___ });
   };
 
   const handleaddUsers_1_000___ = async () => {
@@ -83,11 +73,13 @@ const AddNextComponents: React.FC = () => {
       const addedUsers_1_000___ = await addUsers_1_000___(Users_1_000___).unwrap(); // Get the returned data
       setUsers_1_000___([...users_1_000___, addedUsers_1_000___]); // Use the returned data instead of the local `Users_1_000___` object
       toggleAddModal(false);
-      setnewUsers_1_000___(defaultUsers_1_000___Data);
+      setNewUsers_1_000___(defaultUsers_1_000___Data);
+      handleSuccess('Added Successful');
     } catch (error: unknown) {
-      let errMessage: string = 'Please try again later and check duplicate data or check input.';
+      console.log(error);
+      let errMessage: string = '';
       if (isApiErrorResponse(error)) {
-        errMessage = error.data.message.toLowerCase().includes('duplicate') ? 'Please provide an unique email' : error.data.message;
+        errMessage = formatDuplicateKeyError(error.data.message);
       } else if (error instanceof Error) {
         errMessage = error.message;
       }

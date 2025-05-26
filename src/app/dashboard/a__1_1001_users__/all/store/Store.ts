@@ -25,7 +25,7 @@ export const useUsers_1_000___Store = create<Users_1_000___Store>(set => ({
   setBulkData: (bulkData: IUsers_1_000___[]) => set({ bulkData }),
   setUsers_1_000___: (users_1_000___: IUsers_1_000___[]) => set({ users_1_000___ }),
   setSelectedUsers_1_000___: Users_1_000___ => set({ selectedUsers_1_000___: Users_1_000___ }),
-  setnewUsers_1_000___: Users_1_000___ =>
+  setNewUsers_1_000___: Users_1_000___ =>
     set(state => ({
       newUsers_1_000___: typeof Users_1_000___ === 'function' ? Users_1_000___(state.newUsers_1_000___) : Users_1_000___,
     })),

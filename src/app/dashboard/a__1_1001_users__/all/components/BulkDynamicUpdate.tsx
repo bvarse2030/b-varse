@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '
 import { useUsers_1_000___Store } from '../store/Store';
 import { useBulkUpdateUsers_1_000___Mutation } from '../redux/rtk-Api';
 import DynamicDataSelect from './DynamicDataSelect';
+import { handleSuccess } from './utils';
 
 const BulkDynamicUpdateNextComponents: React.FC = () => {
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
@@ -20,6 +21,7 @@ const BulkDynamicUpdateNextComponents: React.FC = () => {
       await bulkUpdateUsers_1_000___(newBulkData).unwrap();
       toggleBulkDynamicUpdateModal(false);
       setBulkData([]);
+      handleSuccess('Update Successful');
     } catch (error) {
       console.error('Failed to edit users_1_000___:', error);
     }
@@ -64,7 +66,7 @@ const BulkDynamicUpdateNextComponents: React.FC = () => {
             disabled={isLoading}
             variant="outline"
             onClick={handleBulkEditUsers_1_000___}
-            className="cursor-pointer border-green-400 hover:border-green-500 text-green-500"
+            className="text-green-400 hover:text-green-500 cursor-pointer bg-green-100 hover:bg-green-200 border-1 border-green-300 hover:border-green-400"
           >
             Update Selected
           </Button>

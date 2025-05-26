@@ -12,7 +12,7 @@ export interface Users_1_000___Store {
   isViewModalOpen: boolean;
   isEditModalOpen: boolean;
   isDeleteModalOpen: boolean;
-  setnewUsers_1_000___: React.Dispatch<React.SetStateAction<Partial<IUsers_1_000___>>>;
+  setNewUsers_1_000___: React.Dispatch<React.SetStateAction<Partial<IUsers_1_000___>>>;
   isBulkEditModalOpen: boolean;
   isBulkUpdateModalOpen: boolean;
   isBulkDynamicUpdateModal: boolean;

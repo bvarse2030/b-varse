@@ -9,6 +9,7 @@ import { useUsers_1_000___Store } from '../store/Store';
 import { users_1_000___SelectorArr } from '../store/StoreConstants';
 import { IUsers_1_000___ } from '../api/v1/Model';
 import { useBulkUpdateUsers_1_000___Mutation } from '../redux/rtk-Api';
+import { handleSuccess } from './utils';
 
 const BulkEditNextComponents: React.FC = () => {
   const { isBulkEditModalOpen, toggleBulkEditModal, bulkData, setBulkData } = useUsers_1_000___Store();
@@ -21,6 +22,7 @@ const BulkEditNextComponents: React.FC = () => {
       await bulkUpdateUsers_1_000___(newBulkData).unwrap();
       toggleBulkEditModal(false);
       setBulkData([]);
+      handleSuccess('Edit Successful');
     } catch (error) {
       console.error('Failed to edit users_1_000___:', error);
     }
@@ -75,7 +77,7 @@ const BulkEditNextComponents: React.FC = () => {
             disabled={isLoading}
             variant="outline"
             onClick={handleBulkEditUsers_1_000___}
-            className="cursor-pointer border-green-400 hover:border-green-500 text-green-500"
+            className="text-green-400 hover:text-green-500 cursor-pointer bg-green-100 hover:bg-green-200 border-1 border-green-300 hover:border-green-400"
           >
             Update Selected
           </Button>

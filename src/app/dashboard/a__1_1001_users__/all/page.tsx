@@ -71,20 +71,23 @@ const MainNextPage: React.FC = () => {
         </h1>
         <div className="w-full flex gap-2 item-center justify-end">
           <Button
-            className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
+            className="text-green-400 hover:text-green-500 cursor-pointer bg-green-100 hover:bg-green-200 border-1 border-green-300 hover:border-green-400"
             onClick={() => router.push('/dashboard/a__1_1001_users__/ssr-view')}
           >
             <BiRightArrowAlt className="w-4 h-4" />
             SSR View
           </Button>
           <Button
-            className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
+            className="text-green-400 hover:text-green-500 cursor-pointer bg-green-100 hover:bg-green-200 border-1 border-green-300 hover:border-green-400"
             onClick={() => router.push('/dashboard/a__1_1001_users__/client-view')}
           >
             <BiRightArrowAlt className="w-4 h-4" />
             Client View
           </Button>
-          <Button className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={() => toggleAddModal(true)}>
+          <Button
+            className="text-green-400 hover:text-green-500 cursor-pointer bg-green-100 hover:bg-green-200 border-1 border-green-300 hover:border-green-400"
+            onClick={() => toggleAddModal(true)}
+          >
             <PlusIcon className="w-4 h-4" />
             Add User_3_000___
           </Button>

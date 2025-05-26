@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '
 
 import { useUsers_1_000___Store } from '../store/Store';
 import { useBulkDeleteUsers_1_000___Mutation } from '../redux/rtk-Api';
+import { handleSuccess } from './utils';
 
 const BulkDeleteNextComponents: React.FC = () => {
   const { isBulkDeleteModalOpen, toggleBulkDeleteModal, bulkData, setBulkData } = useUsers_1_000___Store();
@@ -17,6 +18,7 @@ const BulkDeleteNextComponents: React.FC = () => {
       await bulkDeleteUsers_1_000___({ ids }).unwrap();
       toggleBulkDeleteModal(false);
       setBulkData([]);
+      handleSuccess('Delete Successful');
     } catch (error) {
       console.error('Failed to delete Users_1_000___:', error);
     }
@@ -51,7 +53,7 @@ const BulkDeleteNextComponents: React.FC = () => {
           <Button
             disabled={isLoading}
             variant="outline"
-            className="cursor-pointer text-rose-500 border-rose-400 hover:border-rose-500"
+            className="text-rose-400 hover:text-rose-500 cursor-pointer bg-rose-100 hover:bg-rose-200 border-1 border-rose-300 hover:border-rose-400 "
             onClick={handleBulkDeleteNextComponents}
           >
             Delete Selected
