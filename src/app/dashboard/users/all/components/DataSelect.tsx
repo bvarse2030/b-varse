@@ -37,11 +37,13 @@ export default function DataSelect({ newItemTags, setNewItemTags, label = 'Selec
       }
     }
   };
-
+  if (!placeholder) {
+    placeholder = 'select';
+  }
   return (
     <div className="container mx-auto">
       <form id="add-form" className="space-y-4">
-        <MultiSelect label={label} placeholder={placeholder} defaultSelected={currentSelection} onSelectionChange={handleSelectionChange} />
+        <MultiSelect label={label} placeholder={placeholder || 'select'} defaultSelected={currentSelection} onSelectionChange={handleSelectionChange} />
       </form>
     </div>
   );

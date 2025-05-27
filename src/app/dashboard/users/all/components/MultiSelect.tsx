@@ -14,18 +14,12 @@ import { X } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
-
-interface IResponseData {
-  id: number;
-  name: string;
-}
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface MultiSelectProps {
   label?: string;
   placeholder?: string;
   defaultSelected?: string[];
-  apiUrl?: string;
   onSelectionChange?: (selectedItems: string[]) => void;
   readOnly?: boolean;
 }
@@ -34,39 +28,11 @@ const MultiSelect = ({
   label = 'Select Data',
   placeholder = 'Select an option',
   defaultSelected = [],
-  apiUrl = 'https://jsonplaceholder.typicode.com/users',
   onSelectionChange,
   readOnly = false,
 }: MultiSelectProps) => {
-  const [availableData, setAvailableData] = useState<string[]>([]);
+  const availableData = ['admin', 'product manager', 'order manager'];
   const [selectedItems, setSelectedItems] = useState<string[]>(defaultSelected);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  // Fetch data on component mount
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch data: ${response.status}`);
-        }
-        const json = await response.json();
-        // Extract names from the API response
-        const names = json.map((item: IResponseData) => item.name);
-        setAvailableData(names);
-        setError(null);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch data');
-        console.error('Error fetching data:', err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [apiUrl]);
 
   // Update selected items from props when they change
   useEffect(() => {
@@ -112,18 +78,16 @@ const MultiSelect = ({
           </Label>
         </div>
         <div className="w-full">
-          <Select onValueChange={handleSelect} disabled={readOnly || isLoading || getAvailableOptions().length === 0} defaultValue={'Please select an option'}>
+          <Select onValueChange={handleSelect} disabled={readOnly || getAvailableOptions().length === 0}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder={placeholder || 'Please select an option'} />
+              <SelectValue placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent className="bg-slate-50 max-h-60">
               <SelectGroup>
-                {isLoading ? (
-                  <SelectLabel className="p-2 text-center text-gray-500">Loading options...</SelectLabel>
-                ) : error ? (
-                  <SelectLabel className="p-2 text-center text-red-500">{error}</SelectLabel>
-                ) : getAvailableOptions().length === 0 ? (
-                  <SelectLabel className="p-2 text-center text-gray-500">No options available</SelectLabel>
+                {getAvailableOptions().length === 0 ? (
+                  <SelectItem value="user" disabled className="p-2 text-center text-gray-500">
+                    No options available
+                  </SelectItem>
                 ) : (
                   getAvailableOptions().map((item, index) => (
                     <SelectItem key={`${item}-${index}`} className="cursor-pointer hover:bg-slate-200" value={item}>

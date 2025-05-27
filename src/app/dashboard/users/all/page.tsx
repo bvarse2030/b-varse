@@ -9,10 +9,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PlusIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-
-import { Button } from '@/components/ui/button';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 import AddFilename8 from './components/Add';
@@ -31,7 +27,7 @@ import BulkDynamicUpdateGAuthUsers from './components/BulkDynamicUpdate';
 
 const MainNextPage: React.FC = () => {
   const [hashSearchText, setHashSearchText] = useState('');
-  const { toggleAddModal, queryPramsLimit, queryPramsPage, queryPramsQ, setQueryPramsPage, setQueryPramsQ } = useGAuthUsersStore();
+  const { queryPramsLimit, queryPramsPage, queryPramsQ, setQueryPramsPage, setQueryPramsQ } = useGAuthUsersStore();
 
   const {
     data: getResponseData,
@@ -67,7 +63,6 @@ const MainNextPage: React.FC = () => {
     BulkUpdateGAuthUsers,
     BulkDynamicUpdateGAuthUsers,
   ];
-  const router = useRouter();
 
   let renderUI = (
     <div className="container mx-auto p-4">
@@ -75,15 +70,7 @@ const MainNextPage: React.FC = () => {
         <h1 className="text-2xl font-bold w-full">
           GAuthUser Management {isSuccess && <sup className="text-xs">(total:{getResponseData?.data?.total || '00'})</sup>}
         </h1>
-        <div className="w-full flex gap-2 item-center justify-end">
-          <Button
-            className="text-green-400 hover:text-green-500 cursor-pointer bg-green-100 hover:bg-green-200 border-1 border-green-300 hover:border-green-400"
-            onClick={() => toggleAddModal(true)}
-          >
-            <PlusIcon className="w-4 h-4" />
-            Add GAuthUser
-          </Button>
-        </div>
+        <div className="w-full flex gap-2 item-center justify-end"></div>
       </div>
       <SearchBox onSearch={handleSearch} placeholder="Search here ..." autoFocus={false} />
       <ViewGAuthUsersTable />

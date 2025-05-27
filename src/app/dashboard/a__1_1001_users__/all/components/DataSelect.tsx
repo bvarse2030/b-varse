@@ -37,7 +37,9 @@ export default function DataSelect({ newItemTags, setNewItemTags, label = 'Selec
       }
     }
   };
-
+  if (!placeholder) {
+    placeholder = 'select';
+  }
   return (
     <div className="container mx-auto">
       <form id="add-form" className="space-y-4">

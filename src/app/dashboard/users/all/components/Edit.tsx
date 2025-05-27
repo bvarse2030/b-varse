@@ -5,13 +5,16 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Checkbox } from '@/components/ui/checkbox';
 
 import { IGAuthUsers } from '../api/v1/Model';
 import { useGAuthUsersStore } from '../store/Store';
 import { useUpdateGAuthUsersMutation } from '../redux/rtk-Api';
 import { baseIGAuthUsers } from '../store/StoreConstants';
 
+import DataSelect from './DataSelect';
 import { formatDuplicateKeyError, handleError, handleSuccess, isApiErrorResponse } from './utils';
+import { useSession } from 'next-auth/react';
 
 const Edit: React.FC = () => {
   const [newUserRole, setNewUserRole] = useState<string[]>([]);
@@ -32,6 +35,11 @@ const Edit: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNewGAuthUsers({ ...newGAuthUsers, [name]: value });
+  };
+
+  const { data: sessionData } = useSession();
+  const handleCheckboxChange = (checked: boolean) => {
+    setNewGAuthUsers({ ...newGAuthUsers, isBlocked: checked, blockedBy: checked ? sessionData?.user?.email || '' : '' });
   };
 
   const handleEdit = async () => {
@@ -85,7 +93,7 @@ const Edit: React.FC = () => {
               <Label htmlFor="edit-email" className="text-right">
                 Email
               </Label>
-              <Input id="edit-email" name="email" type="email" value={newGAuthUsers.email || ''} onChange={handleInputChange} className="col-span-3" />
+              <Input readOnly id="edit-email" name="email" type="email" value={newGAuthUsers.email || ''} onChange={handleInputChange} className="col-span-3" />
             </div>
 
             <div className="grid grid-cols-4 items-center gap-4">
@@ -108,6 +116,24 @@ const Edit: React.FC = () => {
               </Label>
               <Input id="edit-userUID" name="userUID" value={newGAuthUsers.userUID || ''} onChange={handleInputChange} className="col-span-3" />
             </div>
+
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="edit-blockedBy" className="text-right">
+                Blocked By
+              </Label>
+              <Input readOnly id="edit-blockedBy" name="blockedBy" value={newGAuthUsers.blockedBy || ''} onChange={handleInputChange} className="col-span-3" />
+            </div>
+
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="edit-isBlocked" className="text-right">
+                Is Blocked
+              </Label>
+              <div className="col-span-3">
+                <Checkbox id="edit-isBlocked" checked={newGAuthUsers.isBlocked || false} onCheckedChange={handleCheckboxChange} />
+              </div>
+            </div>
+
+            <DataSelect newItemTags={newUserRole} setNewItemTags={setNewUserRole} label="User Roles" />
           </div>
 
           <div className="mt-4 pt-4" />

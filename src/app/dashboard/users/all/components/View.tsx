@@ -46,7 +46,7 @@ const ViewNextComponents: React.FC = () => {
   const DetailRowBoolean = ({ label, value }: { label: string; value: boolean }) => (
     <div className="grid grid-cols-3 gap-2">
       <div className="font-semibold">{label}:</div>
-      <div className="col-span-2">{value || 'N/A'}</div>
+      <div className="col-span-2">{value ? 'Yes' : 'No'}</div>
     </div>
   );
 
