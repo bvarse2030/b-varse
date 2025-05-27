@@ -11,19 +11,15 @@
 import React, { useState } from 'react';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
-import AddFilename8 from './components/Add';
 import EditFilename8 from './components/Edit';
 import ViewFilename8 from './components/View';
 import SearchBox from './components/SearchBox';
 import DeleteFilename8 from './components/Delete';
-import BulkEditFilename8 from './components/BulkEdit';
 import { useGAuthUsersStore } from './store/Store';
 import TooManyRequests from './components/TooManyRequest';
 import BulkDeleteFilename8 from './components/BulkDelete';
 import { useGetGAuthUsersQuery } from './redux/rtk-Api';
 import ViewGAuthUsersTable from './components/ViewTable';
-import BulkUpdateGAuthUsers from './components/BulkUpdate';
-import BulkDynamicUpdateGAuthUsers from './components/BulkDynamicUpdate';
 
 const MainNextPage: React.FC = () => {
   const [hashSearchText, setHashSearchText] = useState('');
@@ -53,16 +49,7 @@ const MainNextPage: React.FC = () => {
     }
   };
 
-  const modals = [
-    AddFilename8,
-    ViewFilename8,
-    BulkDeleteFilename8,
-    BulkEditFilename8,
-    EditFilename8,
-    DeleteFilename8,
-    BulkUpdateGAuthUsers,
-    BulkDynamicUpdateGAuthUsers,
-  ];
+  const modals = [ViewFilename8, BulkDeleteFilename8, EditFilename8, DeleteFilename8];
 
   let renderUI = (
     <div className="container mx-auto p-4">

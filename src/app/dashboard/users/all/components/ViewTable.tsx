@@ -33,11 +33,8 @@ const ViewTableNextComponents: React.FC = () => {
   const [sortConfig, setSortConfig] = useState<{ key: keyof IGAuthUsers; direction: 'asc' | 'desc' } | null>(null);
   const {
     setSelectedGAuthUsers,
-    toggleBulkEditModal,
-    toggleBulkUpdateModal,
     toggleViewModal,
     queryPramsLimit,
-    toggleBulkDynamicUpdateModal,
     queryPramsPage,
     queryPramsQ,
     toggleEditModal,

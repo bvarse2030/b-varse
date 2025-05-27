@@ -11,7 +11,6 @@ export default function AuthCheckingComponent({ redirectUrl = '/' as string, chi
 
   const router = useRouter();
 
-  console.log('session auth : ', sessionData);
   const data = {
     name: sessionData.data?.user.name,
     email: sessionData.data?.user.email,
