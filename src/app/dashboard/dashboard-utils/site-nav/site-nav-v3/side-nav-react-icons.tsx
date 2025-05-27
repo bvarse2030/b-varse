@@ -7,7 +7,16 @@
 */
 
 import { BiPieChartAlt } from 'react-icons/bi';
+import { FiUsers } from 'react-icons/fi';
+import { RiUserSettingsLine } from 'react-icons/ri';
+import { FaUserSecret } from 'react-icons/fa';
+import { TbUserShare, TbUserSquareRounded } from 'react-icons/tb';
 
 const iconBiPieChartAlt = <BiPieChartAlt />;
-
-export { iconBiPieChartAlt };
+const iconRiUserSettingsLine = <RiUserSettingsLine />;
+const iconFiUsers = <FiUsers />;
+const iconFaUserSecret = <FaUserSecret />;
+const iconTbUserSquareRounded = <TbUserSquareRounded />;
+const iconTbUserShare = <TbUserShare />;
+const icon = <RiUserSettingsLine />;
+export { iconTbUserShare, iconTbUserSquareRounded, iconFaUserSecret, iconFiUsers, iconBiPieChartAlt, iconRiUserSettingsLine };

@@ -7,7 +7,14 @@
 */
 import { Url } from 'url';
 import { ReactNode } from 'react';
-import { iconBiPieChartAlt } from '../site-nav-v4/side-nav-react-icons';
+import {
+  iconBiPieChartAlt,
+  iconFaUserSecret,
+  iconFiUsers,
+  iconRiUserSettingsLine,
+  iconTbUserShare,
+  iconTbUserSquareRounded,
+} from '../site-nav-v3/side-nav-react-icons';
 
 export type LINKTYPE = {
   name: string;
@@ -31,23 +38,23 @@ export const sidebarDataHome: SIDEBARTYPE[] = [
   {
     id: 10001,
     name: 'Users',
-    icon: iconBiPieChartAlt,
+    icon: iconRiUserSettingsLine,
     content: [
-      { id: 1000101, name: 'All', link: '/dashboard/users/all', icon: iconBiPieChartAlt },
-      { id: 1000102, name: 'Admin', link: '/dashboard/users/admin', icon: iconBiPieChartAlt },
-      { id: 1000103, name: 'Product Manager', link: '/dashboard/users/product-manager', icon: iconBiPieChartAlt },
-      { id: 1000104, name: 'Order Manager', link: '/dashboard/users/order-manager', icon: iconBiPieChartAlt },
+      { id: 1000101, name: 'All', link: '/dashboard/users/all', icon: iconFiUsers },
+      { id: 1000102, name: 'Admin', link: '/dashboard/users/admin', icon: iconFaUserSecret },
+      { id: 1000103, name: 'Product Manager', link: '/dashboard/users/product-manager', icon: iconTbUserSquareRounded },
+      { id: 1000104, name: 'Order Manager', link: '/dashboard/users/order-manager', icon: iconTbUserShare },
     ],
   },
   {
     id: 10002,
-    name: 'Role Management',
+    name: 'Access Management',
     icon: iconBiPieChartAlt,
     content: [
-      { id: 1000201, name: 'All', link: '/dashboard/role-management/all', icon: iconBiPieChartAlt },
-      { id: 1000202, name: 'Admin', link: '/dashboard/role-management/admin', icon: iconBiPieChartAlt },
-      { id: 1000203, name: 'Product Manager', link: '/dashboard/role-management/product-manager', icon: iconBiPieChartAlt },
-      { id: 1000204, name: 'Order Manager', link: '/dashboard/role-management/order-manager', icon: iconBiPieChartAlt },
+      { id: 1000201, name: 'All', link: '/dashboard/access-management/all', icon: iconBiPieChartAlt },
+      { id: 1000202, name: 'Admin', link: '/dashboard/access-management/admin', icon: iconBiPieChartAlt },
+      { id: 1000203, name: 'Product Manager', link: '/dashboard/access-management/product-manager', icon: iconBiPieChartAlt },
+      { id: 1000204, name: 'Order Manager', link: '/dashboard/access-management/order-manager', icon: iconBiPieChartAlt },
     ],
   },
   {
