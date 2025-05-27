@@ -16,15 +16,9 @@ const CustomNav1 = () => {
   const links: links = [
     { name: 'Home', url: '/' },
     { name: 'Media', url: '/dashboard/media' },
-    { name: 'Route Check', url: '/route-check' },
-    { name: 'RTK', url: '/a__1001_users__' },
-    { name: 'RTK-all', url: '/dashboard/a__1_1001_users__/all' },
-    { name: 'RichText', url: '/a-rich-text' },
+    { name: 'RTK', url: '/dashboard/a__1_1001_users__/all' },
     { name: 'Login', url: '/login' },
-    { name: 'SignUp', url: '/signup' },
     { name: 'Auth', url: '/auth' },
-    { name: 'Template 6', url: '/template6' },
-    { name: 'Zustand', url: '/zustand' },
     { name: 'Dashboard', url: '/dashboard' },
   ];
 
