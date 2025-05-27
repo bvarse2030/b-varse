@@ -5,7 +5,7 @@ import { ReduxProvider } from '@/redux/provider';
 import { ToastContainer } from 'react-toastify';
 import NextAuthProvider from './auth/components/SessionProvider';
 import MainFooter from '@/components/common/footer/MainFooter';
-import NavLayoutTemplate from '@/components/global/nav/Template-Nav/nav';
+import NavLayoutTemplate from '@/components/global/nav/Template-Nav/NavLayoutTemplate';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
