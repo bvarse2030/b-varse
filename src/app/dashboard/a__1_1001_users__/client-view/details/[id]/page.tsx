@@ -25,7 +25,7 @@ const Page = () => {
           return;
         }
 
-        const url = `http://localhost:3000/dashboard/a__1_1001_users__/all/api/v1?id=${id}`;
+        const url = `http://https://b-varse.vercel.app:3000/dashboard/a__1_1001_users__/all/api/v1?id=${id}`;
         if (url) {
           try {
             const response = await fetch(url, {

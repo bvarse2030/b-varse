@@ -21,7 +21,7 @@ const Page = () => {
         console.error('Authentication token not found. Unable to fetch data.');
         return;
       }
-      const url = 'http://localhost:3000/dashboard/a__1_1001_users__/all/api/v1?page=1&limit=4';
+      const url = 'https://b-varse.vercel.app/dashboard/a__1_1001_users__/all/api/v1?page=1&limit=4';
 
       try {
         const response = await fetch(url, {
