@@ -1,24 +1,24 @@
-/* 
-|----------------------------------------- 
-| MultiSelect Component for the App
-| @author: Toufiquer Rahman<toufiquer.0@gmail.com> 
-| @copyright: tecmart-template, May, 2025 
-|----------------------------------------- 
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
 */
 
 'use client';
 
 import { useEffect, useState } from 'react';
+import { X } from 'lucide-react';
+
 import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Badge } from '@/components/ui/badge';
-import { X } from 'lucide-react';
 
 interface IResponseData {
   id: number;
   name: string;
-  // Add other properties as needed
 }
 
 interface MultiSelectProps {

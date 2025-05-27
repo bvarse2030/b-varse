@@ -1,15 +1,24 @@
-import React, { useEffect } from 'react';
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
+import Image from 'next/image';
 import { format } from 'date-fns';
+import React, { useEffect } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
+import { IUsers_1_000___ } from '../api/v1/Model';
 import { useUsers_1_000___Store } from '../store/Store';
 import { baseIUsers_1_000___ } from '../store/StoreConstants';
 import { useGetUsers_1_000___ByIdQuery } from '../redux/rtk-Api';
-import { IUsers_1_000___ } from '../api/v1/Model';
-import Image from 'next/image';
+
 import { ViewRichText } from './view-rich-text/ViewRichText';
 
 const ViewNextComponents: React.FC = () => {
@@ -65,8 +74,8 @@ const ViewNextComponents: React.FC = () => {
                         selectedUsers_1_000___.role === 'admin'
                           ? 'bg-amber-100 text-amber-700'
                           : selectedUsers_1_000___.role === 'moderator'
-                            ? 'bg-blue-100 text-blue-700'
-                            : 'bg-green-100 text-green-700'
+                          ? 'bg-blue-100 text-blue-700'
+                          : 'bg-green-100 text-green-700'
                       }`}
                     >
                       {selectedUsers_1_000___.role as string}

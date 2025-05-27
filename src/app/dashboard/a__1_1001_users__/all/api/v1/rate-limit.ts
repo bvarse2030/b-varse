@@ -1,3 +1,11 @@
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 import { NextResponse } from 'next/server';
 
 export const RATE_LIMIT = 100; // 50 requests

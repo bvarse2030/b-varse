@@ -1,8 +1,8 @@
 /*
 |-----------------------------------------
-| setting up DataViewer for the App
+| setting up Controller for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
-| @copyright: my-tiptap-project, May, 2025
+| @copyright: varse-project, May, 2025
 |-----------------------------------------
 */
 
@@ -22,5 +22,5 @@ export const ViewRichText = ({ data }: { data: string }) => {
     [&_.text-justify]:text-justify"
       dangerouslySetInnerHTML={{ __html: data }}
     />
-  )
-}
+  );
+};

@@ -1,5 +1,13 @@
-import React, { useState, useEffect } from 'react';
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 
 interface TooManyRequestsProps {
   message?: string;

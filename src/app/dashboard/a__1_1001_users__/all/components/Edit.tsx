@@ -1,3 +1,11 @@
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 import React, { useEffect, useState } from 'react';
 
 import { Input } from '@/components/ui/input';
@@ -7,10 +15,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
+import { IUsers_1_000___ } from '../api/v1/Model';
 import { useUsers_1_000___Store } from '../store/Store';
 import { useUpdateUsers_1_000___Mutation } from '../redux/rtk-Api';
-import { IUsers_1_000___ } from '../api/v1/Model';
 import { ISelect_6_000___, users_2_000___SelectorArr, baseIUsers_1_000___ } from '../store/StoreConstants';
+
 import DataSelect from './DataSelect';
 import ImagesSelect from './ImagesSelect';
 import RichTextEditor from './rich-text-editor';
@@ -26,7 +35,6 @@ const EditNextComponents: React.FC = () => {
 
   const onChange = (content: string) => {
     setDescriptions(content);
-    console.log(content);
   };
   useEffect(() => {
     if (selectedUsers_1_000___) {

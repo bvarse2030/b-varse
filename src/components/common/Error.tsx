@@ -1,9 +1,16 @@
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 // ErrorMessage.tsx
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-
 
 type CustomErrorType = {
   data: unknown;
@@ -106,7 +113,6 @@ const ErrorMessageComponent: React.FC<ErrorMessageProps> = ({
   const displayMessage = getDisplayMessage(message);
   if (displayMessage.includes('432') || displayMessage.includes('token is expire')) {
     sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
-   
   }
   return (
     <AnimatePresence>

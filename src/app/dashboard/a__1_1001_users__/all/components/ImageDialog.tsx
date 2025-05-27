@@ -1,17 +1,18 @@
 /*
 |-----------------------------------------
-| setting up ImageDialog for the App
+| setting up Controller for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
-| @copyright: tecmart-template, May, 2025
+| @copyright: varse-project, May, 2025
 |-----------------------------------------
 */
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
+
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const ImageDialog = ({ handleAddImages }: { handleAddImages: (newImage: string) => void }) => {
   const [allImages, setAllImages] = useState<string[]>([]);
@@ -54,7 +55,6 @@ const ImageDialog = ({ handleAddImages }: { handleAddImages: (newImage: string) 
         if (!saveResponse.ok) {
           throw new Error('Error! Cannot save the image.');
         }
-        console.log('new upload image url : ', data?.data?.url);
         setAllImages([data?.data?.url, ...allImages]);
         toast.success('Image uploaded successfully!');
         setShowUploadModal(false);

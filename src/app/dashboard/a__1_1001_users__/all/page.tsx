@@ -1,27 +1,34 @@
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 'use client';
 
 import React, { useState } from 'react';
 import { PlusIcon } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { BiRightArrowAlt } from 'react-icons/bi';
 
 import { Button } from '@/components/ui/button';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
-import { useUsers_1_000___Store } from './store/Store';
-import { useGetUsers_1_000___Query } from './redux/rtk-Api';
-
 import AddFilename8 from './components/Add';
 import EditFilename8 from './components/Edit';
 import ViewFilename8 from './components/View';
-import TooManyRequests from './components/TooManyRequest';
+import SearchBox from './components/SearchBox';
 import DeleteFilename8 from './components/Delete';
 import BulkEditFilename8 from './components/BulkEdit';
+import { useUsers_1_000___Store } from './store/Store';
+import TooManyRequests from './components/TooManyRequest';
 import BulkDeleteFilename8 from './components/BulkDelete';
+import { useGetUsers_1_000___Query } from './redux/rtk-Api';
 import ViewUsers_1_000___Table from './components/ViewTable';
-import SearchBox from './components/SearchBox';
 import BulkUpdateUsers_1_000___ from './components/BulkUpdate';
 import BulkDynamicUpdateUsers_1_000___ from './components/BulkDynamicUpdate';
-import { BiRightArrowAlt } from 'react-icons/bi';
-import { useRouter } from 'next/navigation';
 
 const MainNextPage: React.FC = () => {
   const [hashSearchText, setHashSearchText] = useState('');

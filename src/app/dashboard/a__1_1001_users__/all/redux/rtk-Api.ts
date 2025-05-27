@@ -1,11 +1,10 @@
 /*
 |-----------------------------------------
-| setting up Users_1_000___Api for the App
+| setting up Controller for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
-| @copyright: Toufiquer, February, 2024
+| @copyright: varse-project, May, 2025
 |-----------------------------------------
 */
-
 // This file is use for rest api
 import { apiSlice } from '@/redux/api/apiSlice';
 

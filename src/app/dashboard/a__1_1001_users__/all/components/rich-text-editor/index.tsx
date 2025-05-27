@@ -1,21 +1,28 @@
-'use client'
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
 
-import { EditorContent, useEditor } from '@tiptap/react'
-import StarterKit from '@tiptap/starter-kit'
-import React from 'react'
-import MenuBar from './menu-bar'
-import TextAlign from '@tiptap/extension-text-align'
-import Highlight from '@tiptap/extension-highlight'
+'use client';
+
+import React from 'react';
+
+import StarterKit from '@tiptap/starter-kit';
+import Highlight from '@tiptap/extension-highlight';
+import TextAlign from '@tiptap/extension-text-align';
+import { EditorContent, useEditor } from '@tiptap/react';
+
+import MenuBar from './menu-bar';
 
 interface RichTextEditorProps {
-  content: string
-  onChange: (content: string) => void
+  content: string;
+  onChange: (content: string) => void;
 }
 
-export default function RichTextEditor({
-  content,
-  onChange,
-}: RichTextEditorProps) {
+export default function RichTextEditor({ content, onChange }: RichTextEditorProps) {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -42,20 +49,19 @@ export default function RichTextEditor({
     content: content,
     editorProps: {
       attributes: {
-        class:
-          'min-h-[156px] border rounded-md bg-slate-50 py-2 px-3 prose prose-headings:font-bold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg',
+        class: 'min-h-[156px] border rounded-md bg-slate-50 py-2 px-3 prose prose-headings:font-bold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg',
       },
     },
     onUpdate: ({ editor }) => {
-      onChange(editor.getHTML())
+      onChange(editor.getHTML());
     },
     immediatelyRender: false,
-  })
+  });
 
   return (
     <div className="tiptap-editor">
       <MenuBar editor={editor} />
       <EditorContent editor={editor} />
     </div>
-  )
+  );
 }

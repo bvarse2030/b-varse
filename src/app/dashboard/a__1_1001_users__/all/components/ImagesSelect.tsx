@@ -1,17 +1,19 @@
-/* 
-|----------------------------------------- 
-| MultiSelect Demo Page
-| @author: Toufiquer Rahman<toufiquer.0@gmail.com> 
-| @copyright: tecmart-template, May, 2025 
-|----------------------------------------- 
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
 */
 
 'use client';
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import ImageDialog from './ImageDialog';
 import Image from 'next/image';
 import { Plus, X } from 'lucide-react';
+
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+
+import ImageDialog from './ImageDialog';
 
 interface ImagesSelectProps {
   newImages: string[];

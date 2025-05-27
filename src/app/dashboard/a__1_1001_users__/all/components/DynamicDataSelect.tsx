@@ -1,15 +1,15 @@
-/* 
-|----------------------------------------- 
-| MultiSelect Demo Page
-| @author: Toufiquer Rahman<toufiquer.0@gmail.com> 
-| @copyright: tecmart-template, May, 2025 
-|----------------------------------------- 
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
 */
 
-// File: DataSelect.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
+
 import MultiSelect from './MultiSelect';
 
 interface DataSelectProps {

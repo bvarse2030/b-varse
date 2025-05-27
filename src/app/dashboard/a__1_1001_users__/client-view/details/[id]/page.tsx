@@ -1,11 +1,10 @@
 /*
 |-----------------------------------------
-| setting up Page for the App
+| setting up Controller for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
-| @copyright: tecmart-template, May, 2025
+| @copyright: varse-project, May, 2025
 |-----------------------------------------
 */
-
 'use client';
 
 import Link from 'next/link';
@@ -15,7 +14,6 @@ import { useEffect, useState } from 'react';
 const Page = () => {
   const [data, setData] = useState({ name: '' });
   const pathname = usePathname();
-  console.log('pathname : ', pathname.split('/')[5]);
   const id = pathname.split('/')[5];
 
   useEffect(() => {
@@ -38,7 +36,6 @@ const Page = () => {
             });
 
             const responseData = await response.json();
-            console.log(responseData);
             setData(responseData?.data);
           } catch (error) {
             console.error('Failed to fetch data:', error);

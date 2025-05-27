@@ -1,7 +1,15 @@
-import { IResponse } from './jwt-verify';
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
+import { withDB } from '@/app/api/utils/db';
 
 import User_3_000___ from './Model';
-import { withDB } from '@/app/api/utils/db';
+import { IResponse } from './jwt-verify';
 import { connectRedis, getRedisData } from './redis';
 
 // Helper to format responses
@@ -76,7 +84,6 @@ export async function getUsers_1_000___(req: Request) {
 }
 
 // UPDATE single User_3_000___ by ID
-
 export async function updateUser_3_000___(req: Request) {
   return withDB(async () => {
     try {

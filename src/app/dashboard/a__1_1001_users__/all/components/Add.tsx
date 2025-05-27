@@ -1,20 +1,29 @@
-import React, { useEffect, useState } from 'react';
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
 
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import React, { useState } from 'react';
+
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { useAddUsers_1_000___Mutation } from '../redux/rtk-Api';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 import { useUsers_1_000___Store } from '../store/Store';
-import { ScrollArea } from '@/components/ui/scroll-area';
-
+import { useAddUsers_1_000___Mutation } from '../redux/rtk-Api';
 import { defaultUsers_1_000___Data, select_5_000___, ISelect_6_000___, users_2_000___SelectorArr } from '../store/StoreConstants';
-import { formatDuplicateKeyError, handleError, handleSuccess, isApiErrorResponse } from './utils';
+
+
 import DataSelect from './DataSelect';
 import ImagesSelect from './ImagesSelect';
 import RichTextEditor from './rich-text-editor';
+import { formatDuplicateKeyError, handleError, handleSuccess, isApiErrorResponse } from './utils';
 
 const InputField: React.FC<{
   id: string;
@@ -33,7 +42,7 @@ const InputField: React.FC<{
 );
 
 const AddNextComponents: React.FC = () => {
-  const { toggleAddModal, isAddModalOpen, users_2_000___, newUsers_1_000___, setNewUsers_1_000___, setUsers_1_000___ } = useUsers_1_000___Store();
+  const { toggleAddModal, isAddModalOpen, newUsers_1_000___, setNewUsers_1_000___, setUsers_1_000___ } = useUsers_1_000___Store();
   const [addUsers_1_000___, { isLoading }] = useAddUsers_1_000___Mutation();
 
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
@@ -55,7 +64,7 @@ const AddNextComponents: React.FC = () => {
     setNewUsers_1_000___({ ...newUsers_1_000___, role: value as ISelect_6_000___ });
   };
 
-  const handleaddUsers_1_000___ = async () => {
+  const handleAddUsers_1_000___ = async () => {
     const Users_2_000___ = {
       dataArr: newItemTags || [],
       name: newUsers_1_000___.name || '',
@@ -71,7 +80,7 @@ const AddNextComponents: React.FC = () => {
 
     try {
       const addedUsers_1_000___ = await addUsers_1_000___(Users_2_000___).unwrap(); // Get the returned data
-      setUsers_1_000___([...users_2_000___, addedUsers_1_000___]); // Use the returned data instead of the local `Users_1_000___` object
+      setUsers_1_000___([Users_2_000___, addedUsers_1_000___]); // Use the returned data instead of the local `Users_1_000___` object
       toggleAddModal(false);
       setNewUsers_1_000___(defaultUsers_1_000___Data);
       handleSuccess('Added Successful');
@@ -139,7 +148,7 @@ const AddNextComponents: React.FC = () => {
             disabled={isLoading}
             variant="outline"
             className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
-            onClick={handleaddUsers_1_000___}
+            onClick={handleAddUsers_1_000___}
           >
             Add Users_1_000___
           </Button>

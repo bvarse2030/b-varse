@@ -1,8 +1,8 @@
 /*
 |-----------------------------------------
-| setting up Page for the App
+| setting up Controller for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
-| @copyright: tecmart-template, May, 2025
+| @copyright: varse-project, May, 2025
 |-----------------------------------------
 */
 
@@ -27,7 +27,6 @@ const Page = async () => {
       });
 
       const responseData = await response.json();
-      console.log(responseData);
       return responseData.data?.users_2_000___;
     } catch (error) {
       console.error('Failed to fetch data:', error);

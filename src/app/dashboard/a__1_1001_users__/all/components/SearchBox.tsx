@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
 import { Search, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 
 interface SearchBoxProps {
   onSearch: (query: string) => void;

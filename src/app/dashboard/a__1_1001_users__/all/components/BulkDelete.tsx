@@ -1,10 +1,20 @@
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 import React from 'react';
+
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 import { useUsers_1_000___Store } from '../store/Store';
 import { useBulkDeleteUsers_1_000___Mutation } from '../redux/rtk-Api';
+
 import { handleSuccess } from './utils';
 
 const BulkDeleteNextComponents: React.FC = () => {

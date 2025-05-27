@@ -1,13 +1,14 @@
 /*
 |-----------------------------------------
-| setting up Page for the App
+| setting up Controller for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
-| @copyright: tecmart-template, May, 2025
+| @copyright: varse-project, May, 2025
 |-----------------------------------------
 */
 
-import HomeButton from './HomeButton';
 import { notFound } from 'next/navigation';
+
+import HomeButton from './HomeButton';
 
 interface ApiResponse {
   data: { name: string; _id: string };
@@ -62,9 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  console.log(' ssr : ', id);
   const data = await getData(id);
-  console.log(' ssr : ', data);
   return (
     <div className="py-12 flex flex-col w-full">
       <DataDetails data={data.data as { name: string; _id: string }} />

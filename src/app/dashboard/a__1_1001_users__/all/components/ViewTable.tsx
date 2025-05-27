@@ -1,22 +1,32 @@
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Button } from '@/components/ui/button';
-import { EyeIcon, PencilIcon, TrashIcon } from 'lucide-react';
 import { format } from 'date-fns';
+import React, { useState, useMemo } from 'react';
+import { IoReloadCircleOutline } from 'react-icons/io5';
+import { EyeIcon, PencilIcon, TrashIcon } from 'lucide-react';
+
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import LoadingComponent from '@/components/common/Loading';
 import ErrorMessageComponent from '@/components/common/Error';
-import { Label } from '@/components/ui/label';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
+
+import { IUsers_1_000___ } from '../api/v1/Model';
+import { pageLimitArr } from '../store/StoreConstants';
+import { useUsers_1_000___Store } from '../store/Store';
+import { useGetUsers_1_000___Query } from '../redux/rtk-Api';
 
 import Pagination from './Pagination';
-import { IUsers_1_000___ } from '../api/v1/Model';
-import { useGetUsers_1_000___Query } from '../redux/rtk-Api';
-import { useUsers_1_000___Store } from '../store/Store';
-import { pageLimitArr } from '../store/StoreConstants';
-import { IoReloadCircleOutline } from 'react-icons/io5';
 import { handleSuccess } from './utils';
 
 const ViewTableNextComponents: React.FC = () => {
@@ -73,7 +83,6 @@ const ViewTableNextComponents: React.FC = () => {
       return 0;
     });
   }, [getAllUsers_1_000___Data, sortConfig]);
-  console.log('sortedUsers_1_000___Data', sortedUsers_1_000___Data);
   const handleSelectAll = (isChecked: boolean) => setBulkData(isChecked ? getAllUsers_1_000___Data : []);
   const handleSelectRow = (isChecked: boolean, Users_1_000___: IUsers_1_000___) =>
     setBulkData(isChecked ? [...bulkData, Users_1_000___] : bulkData.filter(item => item.email !== Users_1_000___.email));

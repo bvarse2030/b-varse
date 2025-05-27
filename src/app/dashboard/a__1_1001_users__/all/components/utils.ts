@@ -1,4 +1,13 @@
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 import { toast } from 'react-toastify';
+
 import { ApiErrorResponse } from './TypeUtils';
 
 export const handleSuccess = (message: string) => {
@@ -32,7 +41,6 @@ export function isApiErrorResponse(error: unknown): error is ApiErrorResponse {
 }
 
 export function formatDuplicateKeyError(errorString: string) {
-  console.log('errorString', errorString);
   const jsonMatch = errorString.match(/{.*}/);
 
   if (!jsonMatch || !jsonMatch[0]) {

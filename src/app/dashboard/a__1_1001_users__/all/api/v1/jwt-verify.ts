@@ -1,8 +1,8 @@
 /*
 |-----------------------------------------
-| setting up Utils for the App
+| setting up Controller for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
-| @copyright: Toufiquer, April, 2025
+| @copyright: varse-project, May, 2025
 |-----------------------------------------
 */
 
@@ -20,18 +20,10 @@ export const formatResponse = (data: unknown, message: string, status: number) =
 export const handleTokenVerify = (req: Request) => {
   const authorizationToken = req.headers.get('authorization');
   const token = authorizationToken?.split(' ')[1];
-  console.log('');
-  console.log('');
-  console.log('');
-  console.log('token : ', token);
-  console.log('');
-  console.log('');
-  console.log('');
   if (!token) {
     return NextResponse.json({ data: null, message: 'Please provide a token', status: 430 }, { status: 430 });
   } else if (token) {
     const result = verifyJwt(token);
-    console.log('result : ', result);
     if (result.isValid) {
       return null;
     } else {

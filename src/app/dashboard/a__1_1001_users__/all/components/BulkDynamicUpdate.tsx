@@ -1,3 +1,11 @@
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -5,8 +13,9 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '
 
 import { useUsers_1_000___Store } from '../store/Store';
 import { useBulkUpdateUsers_1_000___Mutation } from '../redux/rtk-Api';
-import DynamicDataSelect from './DynamicDataSelect';
+
 import { handleSuccess } from './utils';
+import DynamicDataSelect from './DynamicDataSelect';
 
 const BulkDynamicUpdateNextComponents: React.FC = () => {
   const [newItemTags, setNewItemTags] = useState<string[]>([]);

@@ -1,11 +1,21 @@
+/*
+|-----------------------------------------
+| setting up Controller for the App
+| @author: Toufiquer Rahman<toufiquer.0@gmail.com>
+| @copyright: varse-project, May, 2025
+|-----------------------------------------
+*/
+
 import React from 'react';
+
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
+import { IUsers_1_000___ } from '../api/v1/Model';
 import { useUsers_1_000___Store } from '../store/Store';
 import { baseIUsers_1_000___ } from '../store/StoreConstants';
 import { useDeleteUsers_1_000___Mutation } from '../redux/rtk-Api';
-import { IUsers_1_000___ } from '../api/v1/Model';
+
 import { handleSuccess } from './utils';
 
 const DeleteNextComponents: React.FC = () => {
