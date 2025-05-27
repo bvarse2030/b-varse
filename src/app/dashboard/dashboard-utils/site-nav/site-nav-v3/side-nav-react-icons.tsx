@@ -14,6 +14,13 @@ import { TbUserShare, TbUserSquareRounded } from 'react-icons/tb';
 import { LuBaggageClaim } from 'react-icons/lu';
 import { PiShoppingBagOpenDuotone } from 'react-icons/pi';
 import { FiShoppingBag } from 'react-icons/fi';
+import { FaCartArrowDown } from 'react-icons/fa6';
+import { MdShoppingCartCheckout } from 'react-icons/md';
+import { TbTruckLoading } from 'react-icons/tb';
+import { MdRemoveShoppingCart } from 'react-icons/md';
+import { TbShoppingCartPause } from 'react-icons/tb';
+import { TbShoppingCartCopy } from 'react-icons/tb';
+import { TbShoppingCartBolt } from 'react-icons/tb';
 
 const iconBiPieChartAlt = <BiPieChartAlt />;
 const iconRiUserSettingsLine = <RiUserSettingsLine />;
@@ -26,8 +33,22 @@ const iconBiCategory = <BiCategory />;
 const iconLucideBaggageClaim = <LuBaggageClaim />;
 const iconPiShoppingBagOpenDuotone = <PiShoppingBagOpenDuotone />;
 const iconFiShoppingBag = <FiShoppingBag />;
+const iconFaCartArrowDown = <FaCartArrowDown />;
+const iconMdShoppingCartCheckout = <MdShoppingCartCheckout />;
+const iconTbTruckLoading = <TbTruckLoading />;
+const iconMdRemoveShoppingCart = <MdRemoveShoppingCart />;
+const iconTbShoppingCartPause = <TbShoppingCartPause />;
+const iconTbShoppingCartCopy = <TbShoppingCartCopy />;
+const iconTbShoppingCartBolt = <TbShoppingCartBolt />;
 const icon = <BiCategory />;
 export {
+  iconTbShoppingCartBolt,
+  iconTbShoppingCartCopy,
+  iconTbShoppingCartPause,
+  iconMdRemoveShoppingCart,
+  iconTbTruckLoading,
+  iconMdShoppingCartCheckout,
+  iconFaCartArrowDown,
   iconFiShoppingBag,
   iconPiShoppingBagOpenDuotone,
   iconLucideBaggageClaim,

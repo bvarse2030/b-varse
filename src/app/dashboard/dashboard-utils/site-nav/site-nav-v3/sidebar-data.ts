@@ -19,6 +19,13 @@ import {
   iconLucideBaggageClaim,
   iconPiShoppingBagOpenDuotone,
   iconFiShoppingBag,
+  iconFaCartArrowDown,
+  iconMdShoppingCartCheckout,
+  iconTbTruckLoading,
+  iconMdRemoveShoppingCart,
+  iconTbShoppingCartPause,
+  iconTbShoppingCartCopy,
+  iconTbShoppingCartBolt,
 } from '../site-nav-v3/side-nav-react-icons';
 
 export type LINKTYPE = {
@@ -82,15 +89,15 @@ export const sidebarDataHome: SIDEBARTYPE[] = [
   {
     id: 10005,
     name: 'Orders',
-    icon: iconBiPieChartAlt,
+    icon: iconFaCartArrowDown,
     content: [
-      { id: 1000501, name: 'All', link: '/dashboard/orders/all', icon: iconBiPieChartAlt },
-      { id: 1000502, name: 'Pending', link: '/dashboard/orders/pending', icon: iconBiPieChartAlt },
-      { id: 1000503, name: 'Processing', link: '/dashboard/orders/processing', icon: iconBiPieChartAlt },
-      { id: 1000504, name: 'Cancel', link: '/dashboard/orders/cancel', icon: iconBiPieChartAlt },
-      { id: 1000505, name: 'Holding', link: '/dashboard/orders/holding', icon: iconBiPieChartAlt },
-      { id: 1000506, name: 'Delivered', link: '/dashboard/orders/delivered', icon: iconBiPieChartAlt },
-      { id: 1000507, name: 'Shipped', link: '/dashboard/orders/shipped', icon: iconBiPieChartAlt },
+      { id: 1000501, name: 'All', link: '/dashboard/orders/all', icon: iconFaCartArrowDown },
+      { id: 1000502, name: 'Pending', link: '/dashboard/orders/pending', icon: iconMdShoppingCartCheckout },
+      { id: 1000503, name: 'Processing', link: '/dashboard/orders/processing', icon: iconTbTruckLoading },
+      { id: 1000504, name: 'Cancel', link: '/dashboard/orders/cancel', icon: iconMdRemoveShoppingCart },
+      { id: 1000505, name: 'Holding', link: '/dashboard/orders/holding', icon: iconTbShoppingCartPause },
+      { id: 1000506, name: 'Delivered', link: '/dashboard/orders/delivered', icon: iconTbShoppingCartCopy },
+      { id: 1000507, name: 'Shipped', link: '/dashboard/orders/shipped', icon: iconTbShoppingCartBolt },
     ],
   },
   {
