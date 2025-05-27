@@ -16,7 +16,7 @@ const Page = async () => {
       return;
     }
 
-    const url = 'http://https://b-varse.vercel.app:3000/dashboard/a__1_1001_users__/all/api/v1?page=1&limit=4';
+    const url = 'https://b-varse.vercel.app/dashboard/a__1_1001_users__/all/api/v1?page=1&limit=4';
 
     try {
       const response = await fetch(url, {
