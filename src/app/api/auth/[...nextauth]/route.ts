@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+import { updateUser } from './updateUsers';
 
 const handler = NextAuth({
   // Configure authentication providers
@@ -15,18 +16,15 @@ const handler = NextAuth({
     signIn: '/login', // Redirect to custom login page
   },
   callbacks: {
-    async jwt({ token, account }) {
-      if (account) {
-        // Call the function with example data
-        const email = token.email as string;
-        const name = token.name as string;
-        console.log('');
-        const data: { email: string; name: string } = { email, name };
-        console.log('data: ', data);
-      }
+    async jwt({ token }) {
       return token;
     },
     async session({ session }) {
+      try {
+        updateUser(session as { user: { email: string; name: string; image: string } });
+      } catch (e: unknown) {
+        console.log(e);
+      }
       return session;
     },
     async signIn() {

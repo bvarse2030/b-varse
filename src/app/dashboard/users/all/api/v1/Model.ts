@@ -21,8 +21,8 @@ const gAuthUsersSchema = new Schema(
       unique: true,
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email'],
     },
-    passCode: { type: String, required: true },
-    userUID: { type: String, required: true },
+    passCode: { type: String, required: false },
+    userUID: { type: String, required: false },
   },
   { timestamps: true },
 );
