@@ -1,0 +1,6 @@
+i -->> Backend api
+1. Change Modal and inter face for backend. -->> api/v1/Model.ts
+2. Update searchFilter in backend  -->> Controller.ts
+3. Testing the code with postman
+
+ii -->> 

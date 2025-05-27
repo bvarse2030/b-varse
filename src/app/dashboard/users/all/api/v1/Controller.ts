@@ -70,6 +70,8 @@ export async function getGAuthUsers(req: Request) {
             { name: { $regex: searchQuery, $options: 'i' } },
             { email: { $regex: searchQuery, $options: 'i' } },
             { alias: { $regex: searchQuery, $options: 'i' } },
+            { blockedBy: { $regex: searchQuery, $options: 'i' } },
+            { userRole: { $regex: searchQuery, $options: 'i' } },
           ],
         };
       }

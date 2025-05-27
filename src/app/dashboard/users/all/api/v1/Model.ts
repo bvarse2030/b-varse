@@ -7,12 +7,14 @@
 */
 
 import mongoose, { Schema } from 'mongoose';
-import { gAuthUsersSelectorArr, select } from '../../store/StoreConstants';
 
 const gAuthUsersSchema = new Schema(
   {
     name: { type: String, required: true },
-    dataArr: [{ type: String, required: false }],
+    userRole: [{ type: String, required: false }],
+    imageUrl: { type: String, required: false },
+    isBlocked: { type: Boolean, required: false },
+    blockedBy: { type: String, required: false },
     email: {
       type: String,
       required: true,
@@ -20,14 +22,7 @@ const gAuthUsersSchema = new Schema(
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email'],
     },
     passCode: { type: String, required: true },
-    alias: { type: String, required: true },
-    role: {
-      type: String,
-      enum: gAuthUsersSelectorArr,
-      default: select,
-    },
-    images: [{ type: String }],
-    descriptions: { type: String },
+    userUID: { type: String, required: true },
   },
   { timestamps: true },
 );
@@ -36,14 +31,14 @@ export default mongoose.models.GAuthUser || mongoose.model('GAuthUser', gAuthUse
 
 export interface IGAuthUsers {
   name: string;
-  dataArr?: string[];
+  userRole: string[];
+  imageUrl: string;
+  isBlocked: boolean;
+  blockedBy: string;
   email: string;
   passCode: string;
-  alias: string;
-  role: string;
-  images?: string[];
-  descriptions?: string;
+  userUID: string;
   createdAt: Date;
   updatedAt: Date;
-  _id: string;
+  _id?: string;
 }
