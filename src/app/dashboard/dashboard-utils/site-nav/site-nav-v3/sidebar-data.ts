@@ -14,6 +14,7 @@ import {
   iconRiUserSettingsLine,
   iconTbUserShare,
   iconTbUserSquareRounded,
+  iconRiUserSettingsFill,
 } from '../site-nav-v3/side-nav-react-icons';
 
 export type LINKTYPE = {
@@ -49,12 +50,13 @@ export const sidebarDataHome: SIDEBARTYPE[] = [
   {
     id: 10002,
     name: 'Access Management',
-    icon: iconBiPieChartAlt,
+    icon: iconRiUserSettingsFill,
     content: [
-      { id: 1000201, name: 'All', link: '/dashboard/access-management/all', icon: iconBiPieChartAlt },
-      { id: 1000202, name: 'Admin', link: '/dashboard/access-management/admin', icon: iconBiPieChartAlt },
-      { id: 1000203, name: 'Product Manager', link: '/dashboard/access-management/product-manager', icon: iconBiPieChartAlt },
-      { id: 1000204, name: 'Order Manager', link: '/dashboard/access-management/order-manager', icon: iconBiPieChartAlt },
+      { id: 1000201, name: 'All', link: '/dashboard/access-management/all', icon: iconFiUsers },
+      { id: 1000202, name: 'Admin', link: '/dashboard/access-management/admin', icon: iconFaUserSecret },
+      { id: 1000203, name: 'Product Manager', link: '/dashboard/access-management/product-manager', icon: iconTbUserSquareRounded },
+      { id: 1000204, name: 'Order Manager', link: '/dashboard/access-management/order-manager', icon: iconTbUserShare },
+      { id: 1000204, name: 'Block Users', link: '/dashboard/access-management/block-users', icon: iconTbUserShare },
     ],
   },
   {
