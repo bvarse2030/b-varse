@@ -82,7 +82,7 @@ export const sidebarDataHome: SIDEBARTYPE[] = [
   },
   {
     id: 10006,
-    name: 'Category',
+    name: 'Media',
     icon: iconBiPieChartAlt,
     content: [
       { id: 1000601, name: 'All', link: '/dashboard/media/all', icon: iconBiPieChartAlt },
@@ -95,13 +95,13 @@ export const sidebarDataHome: SIDEBARTYPE[] = [
     name: 'Site Setting',
     icon: iconBiPieChartAlt,
     content: [
-      { id: 1000701, name: 'Header', link: '/dashboard/media/header', icon: iconBiPieChartAlt },
-      { id: 1000702, name: 'Footer', link: '/dashboard/media/footer', icon: iconBiPieChartAlt },
-      { id: 1000703, name: 'Home', link: '/dashboard/media/home', icon: iconBiPieChartAlt },
-      { id: 1000704, name: 'Info', link: '/dashboard/media/info', icon: iconBiPieChartAlt },
-      { id: 1000705, name: 'Contact', link: '/dashboard/media/contact', icon: iconBiPieChartAlt },
-      { id: 1000706, name: 'Privacy Policy', link: '/dashboard/media/privacy-policy', icon: iconBiPieChartAlt },
-      { id: 1000707, name: 'Terms and Condition', link: '/dashboard/media/terms-and-condition', icon: iconBiPieChartAlt },
+      { id: 1000701, name: 'Header', link: '/dashboard/site-setting/header', icon: iconBiPieChartAlt },
+      { id: 1000702, name: 'Footer', link: '/dashboard/site-setting/footer', icon: iconBiPieChartAlt },
+      { id: 1000703, name: 'Home', link: '/dashboard/site-setting/home', icon: iconBiPieChartAlt },
+      { id: 1000704, name: 'Info', link: '/dashboard/site-setting/info', icon: iconBiPieChartAlt },
+      { id: 1000705, name: 'Contact', link: '/dashboard/site-setting/contact', icon: iconBiPieChartAlt },
+      { id: 1000706, name: 'Privacy Policy', link: '/dashboard/site-setting/privacy-policy', icon: iconBiPieChartAlt },
+      { id: 1000707, name: 'Terms and Condition', link: '/dashboard/site-setting/terms-and-condition', icon: iconBiPieChartAlt },
     ],
   },
 ];
