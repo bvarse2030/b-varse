@@ -8,19 +8,30 @@
 
 'use client';
 
-import { useSession } from 'next-auth/react';
+import { Button } from '@/components/ui/button';
+import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { IoIosLogOut } from 'react-icons/io';
 
 const LogInDashboardButton = () => {
   const { data: sessionData } = useSession();
+  const handleLogout = async () => {
+    await signOut({ redirect: true, callbackUrl: '/' });
+  };
   return (
     <main>
       {sessionData?.user?.email ? (
-        <>
+        <div className="flex items-center justify-center gap-8">
           <Link href="/dashboard">Dashboard</Link>
-        </>
+          <Button onClick={handleLogout} className="cursor-pointer hover:bg-transparent hover:text-red-500" variant="outline" size="sm">
+            Logout
+            <IoIosLogOut />
+          </Button>
+        </div>
       ) : (
-        <Link href="/login">Login</Link>
+        <Link href="/login" className="flex items-center justify-center gap-8">
+          Login
+        </Link>
       )}
     </main>
   );

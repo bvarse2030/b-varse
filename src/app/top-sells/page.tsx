@@ -6,6 +6,6 @@
 |-----------------------------------------
 */
 const Page = () => {
-  return <main>Blog Page</main>;
+  return <main>Top Sells Page</main>;
 };
 export default Page;

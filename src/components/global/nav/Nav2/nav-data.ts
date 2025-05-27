@@ -71,8 +71,7 @@ const navData = {
     ],
   },
   othersLink: [
-    { id: 1, title: 'Project', url: '/project' },
-    { id: 2, title: 'Blog', url: '/blog' },
+    { id: 2, title: 'Top Sells', url: '/top-sells' },
     { id: 3, title: 'Contact', url: '/contact' },
   ],
 };

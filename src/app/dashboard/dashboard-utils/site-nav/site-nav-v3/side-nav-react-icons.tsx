@@ -62,7 +62,6 @@ const iconIoInformationCircleOutline = <IoInformationCircleOutline />;
 const iconRiContactsBook3Line = <RiContactsBook3Line />;
 const iconMdOutlinePrivacyTip = <MdOutlinePrivacyTip />;
 const iconMdOutlinePolicy = <MdOutlinePolicy />;
-const icon = <BiCategory />;
 export {
   iconMdOutlinePolicy,
   iconMdOutlinePrivacyTip,

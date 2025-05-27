@@ -34,7 +34,9 @@ const SidebarAccordion = ({ data, className }: { children?: ReactNode | null; da
             <div className="flex items-center justify-start gap-2 pl-4 text-[.8rem]">
               <span className="flex items-center">
                 <span
-                  className={`transform transition-transform duration-300 ease-in-out ${toggle ? 'rotate-0' : '-rotate-90'} ${content.length > 0 ? 'visible' : 'invisible'}`}
+                  className={`transform transition-transform duration-300 ease-in-out ${toggle ? 'rotate-0' : '-rotate-90'} ${
+                    content.length > 0 ? 'visible' : 'invisible'
+                  }`}
                 >
                   <GoTriangleDown />
                 </span>
@@ -61,7 +63,7 @@ const SidebarAccordion = ({ data, className }: { children?: ReactNode | null; da
                   <Link
                     key={curr.id || index}
                     href={`${curr.link}`}
-                    className="flex items-center justify-start gap-2 rounded py-[.35rem] pl-[53px] hover:bg-[#eff2f6] hover:text-[#3874ff] transition-all duration-200"
+                    className="flex items-center justify-start gap-2 rounded py-[.35rem] pl-[45px] hover:bg-[#eff2f6] hover:text-[#3874ff] transition-all duration-200"
                   >
                     <span className="flex items-center gap-2 transition-colors duration-200">
                       {curr.icon} {curr.name}
