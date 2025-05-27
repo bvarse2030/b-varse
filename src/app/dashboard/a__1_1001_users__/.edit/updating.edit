@@ -29,3 +29,38 @@ f -->> B.Update 2
 
 g -->> B. Edit 
 
+
+
+----------------------------------------------
+   Prompt
+----------------------------------------------
+Please Update this NextJs component for this interface and type. make sure to use Typescript. 
+export const defaultGAuthUsersData: IGAuthUsers = {
+  _id: '',
+  name: '',
+  userRole: [],
+  imageUrl: '',
+  isBlocked: false,
+  blockedBy: '',
+  email: '',
+  passCode: '',
+  userUID: '',
+  createdAt: new Date(),
+  updatedAt: new Date(),
+};
+export const baseIGAuthUsers: IGAuthUsers = {
+  ...defaultGAuthUsersData,
+};
+export interface IGAuthUsers {
+  name: string;
+  userRole: string[];
+  imageUrl: string;
+  isBlocked: boolean;
+  blockedBy: string;
+  email: string;
+  passCode: string;
+  userUID: string;
+  createdAt: Date;
+  updatedAt: Date;
+  _id?: string;
+}
