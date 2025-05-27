@@ -2,6 +2,9 @@ a -->> Backend api [5]
     1. api/v1/Model.ts
     2. Controller.ts
 
+b -->> Store [10]
+    1. storeConstants.ts
+    
 b -->> Table View []
 
 c -->> Single View
