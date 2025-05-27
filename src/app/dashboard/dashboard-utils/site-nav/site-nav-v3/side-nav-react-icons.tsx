@@ -6,7 +6,7 @@
 |-----------------------------------------
 */
 
-import { BiPieChartAlt } from 'react-icons/bi';
+import { BiCategory, BiPieChartAlt } from 'react-icons/bi';
 import { FiUsers } from 'react-icons/fi';
 import { RiUserSettingsFill, RiUserSettingsLine } from 'react-icons/ri';
 import { FaUserSecret } from 'react-icons/fa';
@@ -19,5 +19,15 @@ const iconFaUserSecret = <FaUserSecret />;
 const iconTbUserSquareRounded = <TbUserSquareRounded />;
 const iconTbUserShare = <TbUserShare />;
 const iconRiUserSettingsFill = <RiUserSettingsFill />;
-const icon = <RiUserSettingsLine />;
-export { iconRiUserSettingsFill, iconTbUserShare, iconTbUserSquareRounded, iconFaUserSecret, iconFiUsers, iconBiPieChartAlt, iconRiUserSettingsLine };
+const iconBiCategory = <BiCategory />;
+const icon = <BiCategory />;
+export {
+  iconBiCategory,
+  iconRiUserSettingsFill,
+  iconTbUserShare,
+  iconTbUserSquareRounded,
+  iconFaUserSecret,
+  iconFiUsers,
+  iconBiPieChartAlt,
+  iconRiUserSettingsLine,
+};

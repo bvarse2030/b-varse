@@ -14,6 +14,7 @@ import {
   iconRiUserSettingsLine,
   iconTbUserShare,
   iconTbUserSquareRounded,
+  iconBiCategory,
   iconRiUserSettingsFill,
 } from '../site-nav-v3/side-nav-react-icons';
 
@@ -62,8 +63,8 @@ export const sidebarDataHome: SIDEBARTYPE[] = [
   {
     id: 10003,
     name: 'Category',
-    icon: iconBiPieChartAlt,
-    content: [{ id: 1000301, name: 'All', link: '/dashboard/category/all', icon: iconBiPieChartAlt }],
+    icon: iconBiCategory,
+    content: [{ id: 1000301, name: 'All', link: '/dashboard/category/all', icon: iconBiCategory }],
   },
   {
     id: 10004,
