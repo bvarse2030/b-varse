@@ -1,6 +1,16 @@
-i -->> Backend api
-1. Change Modal and inter face for backend. -->> api/v1/Model.ts
-2. Update searchFilter in backend  -->> Controller.ts
-3. Testing the code with postman
+a -->> Backend api [5]
+    1. api/v1/Model.ts
+    2. Controller.ts
 
-ii -->> 
+b -->> Table View []
+
+c -->> Single View
+
+d -->> Single Edit
+
+e -->> B.Update 1
+
+f -->> B.Update 2
+
+g -->> B. Edit 
+
