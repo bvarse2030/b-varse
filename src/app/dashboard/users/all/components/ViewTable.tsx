@@ -130,18 +130,12 @@ const ViewTableNextComponents: React.FC = () => {
     sortedGAuthUsersData.map((GAuthUsers: IGAuthUsers, index: number) => (
       <TableRow key={(GAuthUsers.email as string) || index}>
         <TableCell>
-          <Checkbox
-            onCheckedChange={checked => handleSelectRow(!!checked, GAuthUsers)}
-            checked={bulkData.some(item => item.email === GAuthUsers.email)}
-          />
+          <Checkbox onCheckedChange={checked => handleSelectRow(!!checked, GAuthUsers)} checked={bulkData.some(item => item.email === GAuthUsers.email)} />
         </TableCell>
         <TableCell className="font-medium">{(GAuthUsers.name as string) || ''}</TableCell>
         <TableCell className="hidden md:table-cell">{(GAuthUsers.email as string) || ''}</TableCell>
-        <TableCell className="hidden lg:table-cell">{(GAuthUsers.passCode as string) || ''}</TableCell>
-        <TableCell className="hidden md:table-cell">{(GAuthUsers.alias as string) || ''}</TableCell>
-        <TableCell>
-          <span className={`py-1 rounded-full text-xs font-medium bg-green-500 text-green-50 px-3`}>{(GAuthUsers.role as string) || ''}</span>
-        </TableCell>
+
+        <TableCell className="hidden lg:table-cell">{formatDate(GAuthUsers.createdAt)}</TableCell>
         <TableCell className="hidden lg:table-cell">{formatDate(GAuthUsers.createdAt)}</TableCell>
         <TableCell className="justify-end flex">{renderActions(GAuthUsers)}</TableCell>
       </TableRow>
@@ -198,7 +192,7 @@ const ViewTableNextComponents: React.FC = () => {
             <TableHead>
               <Checkbox onCheckedChange={checked => handleSelectAll(!!checked)} checked={bulkData.length === getAllGAuthUsersData.length} />
             </TableHead>
-            {['name', 'email', 'passCode', 'alias', 'role', 'createdAt'].map(key => (
+            {['name', 'email', 'role', 'createdAt'].map(key => (
               <TableHead
                 key={key}
                 className={`font-bold text-slate-50 cursor-pointer ${key === 'email' || key === 'alias' ? 'hidden md:table-cell' : ''} ${

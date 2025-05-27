@@ -6,6 +6,8 @@ b -->> Store [10]
     1. storeConstants.ts
     
 b -->> Table View []
+    1. Update Table header  [TableHead]
+    2. Update Table cell [TableCell]
 
 c -->> Single View
 

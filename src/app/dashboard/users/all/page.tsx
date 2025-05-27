@@ -11,7 +11,6 @@
 import React, { useState } from 'react';
 import { PlusIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { BiRightArrowAlt } from 'react-icons/bi';
 
 import { Button } from '@/components/ui/button';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
@@ -77,20 +76,6 @@ const MainNextPage: React.FC = () => {
           GAuthUser Management {isSuccess && <sup className="text-xs">(total:{getResponseData?.data?.total || '00'})</sup>}
         </h1>
         <div className="w-full flex gap-2 item-center justify-end">
-          <Button
-            className="text-green-400 hover:text-green-500 cursor-pointer bg-green-100 hover:bg-green-200 border-1 border-green-300 hover:border-green-400"
-            onClick={() => router.push('/dashboard/users/ssr-view')}
-          >
-            <BiRightArrowAlt className="w-4 h-4" />
-            SSR View
-          </Button>
-          <Button
-            className="text-green-400 hover:text-green-500 cursor-pointer bg-green-100 hover:bg-green-200 border-1 border-green-300 hover:border-green-400"
-            onClick={() => router.push('/dashboard/users/client-view')}
-          >
-            <BiRightArrowAlt className="w-4 h-4" />
-            Client View
-          </Button>
           <Button
             className="text-green-400 hover:text-green-500 cursor-pointer bg-green-100 hover:bg-green-200 border-1 border-green-300 hover:border-green-400"
             onClick={() => toggleAddModal(true)}
