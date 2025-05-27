@@ -16,6 +16,9 @@ import {
   iconTbUserSquareRounded,
   iconBiCategory,
   iconRiUserSettingsFill,
+  iconLucideBaggageClaim,
+  iconPiShoppingBagOpenDuotone,
+  iconFiShoppingBag,
 } from '../site-nav-v3/side-nav-react-icons';
 
 export type LINKTYPE = {
@@ -69,11 +72,11 @@ export const sidebarDataHome: SIDEBARTYPE[] = [
   {
     id: 10004,
     name: 'Products',
-    icon: iconBiPieChartAlt,
+    icon: iconLucideBaggageClaim,
     content: [
-      { id: 1000401, name: 'All', link: '/dashboard/products/all', icon: iconBiPieChartAlt },
-      { id: 1000402, name: 'Digital', link: '/dashboard/products/digital', icon: iconBiPieChartAlt },
-      { id: 1000403, name: 'Physical', link: '/dashboard/products/physical', icon: iconBiPieChartAlt },
+      { id: 1000401, name: 'All', link: '/dashboard/products/all', icon: iconLucideBaggageClaim },
+      { id: 1000402, name: 'Digital', link: '/dashboard/products/digital', icon: iconPiShoppingBagOpenDuotone },
+      { id: 1000403, name: 'Physical', link: '/dashboard/products/physical', icon: iconFiShoppingBag },
     ],
   },
   {
