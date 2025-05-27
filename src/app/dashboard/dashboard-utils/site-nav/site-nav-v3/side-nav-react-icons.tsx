@@ -21,6 +21,17 @@ import { MdRemoveShoppingCart } from 'react-icons/md';
 import { TbShoppingCartPause } from 'react-icons/tb';
 import { TbShoppingCartCopy } from 'react-icons/tb';
 import { TbShoppingCartBolt } from 'react-icons/tb';
+import { MdOutlinePermMedia } from 'react-icons/md';
+import { GoFileMedia } from 'react-icons/go';
+import { LuTrash } from 'react-icons/lu';
+import { VscSettingsGear } from 'react-icons/vsc';
+import { TbAlignBoxLeftMiddle } from 'react-icons/tb';
+import { HiBars3BottomLeft } from 'react-icons/hi2';
+import { RiHome6Line } from 'react-icons/ri';
+import { IoInformationCircleOutline } from 'react-icons/io5';
+import { RiContactsBook3Line } from 'react-icons/ri';
+import { MdOutlinePrivacyTip } from 'react-icons/md';
+import { MdOutlinePolicy } from 'react-icons/md';
 
 const iconBiPieChartAlt = <BiPieChartAlt />;
 const iconRiUserSettingsLine = <RiUserSettingsLine />;
@@ -40,8 +51,30 @@ const iconMdRemoveShoppingCart = <MdRemoveShoppingCart />;
 const iconTbShoppingCartPause = <TbShoppingCartPause />;
 const iconTbShoppingCartCopy = <TbShoppingCartCopy />;
 const iconTbShoppingCartBolt = <TbShoppingCartBolt />;
+const iconMdOutlinePermMedia = <MdOutlinePermMedia />;
+const iconGoFileMedia = <GoFileMedia />;
+const iconLuTrash = <LuTrash />;
+const iconVscSettingsGear = <VscSettingsGear />;
+const iconTbAlignBoxLeftMiddle = <TbAlignBoxLeftMiddle />;
+const iconHiBars3BottomLeft = <HiBars3BottomLeft />;
+const iconRiHome6Line = <RiHome6Line />;
+const iconIoInformationCircleOutline = <IoInformationCircleOutline />;
+const iconRiContactsBook3Line = <RiContactsBook3Line />;
+const iconMdOutlinePrivacyTip = <MdOutlinePrivacyTip />;
+const iconMdOutlinePolicy = <MdOutlinePolicy />;
 const icon = <BiCategory />;
 export {
+  iconMdOutlinePolicy,
+  iconMdOutlinePrivacyTip,
+  iconRiContactsBook3Line,
+  iconIoInformationCircleOutline,
+  iconRiHome6Line,
+  iconHiBars3BottomLeft,
+  iconTbAlignBoxLeftMiddle,
+  iconVscSettingsGear,
+  iconLuTrash,
+  iconGoFileMedia,
+  iconMdOutlinePermMedia,
   iconTbShoppingCartBolt,
   iconTbShoppingCartCopy,
   iconTbShoppingCartPause,

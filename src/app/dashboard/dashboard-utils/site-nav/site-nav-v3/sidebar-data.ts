@@ -5,10 +5,10 @@
 | @copyright: Toufiquer, May, 2024
 |-----------------------------------------
 */
+
 import { Url } from 'url';
 import { ReactNode } from 'react';
 import {
-  iconBiPieChartAlt,
   iconFaUserSecret,
   iconFiUsers,
   iconRiUserSettingsLine,
@@ -26,6 +26,17 @@ import {
   iconTbShoppingCartPause,
   iconTbShoppingCartCopy,
   iconTbShoppingCartBolt,
+  iconMdOutlinePermMedia,
+  iconGoFileMedia,
+  iconLuTrash,
+  iconVscSettingsGear,
+  iconTbAlignBoxLeftMiddle,
+  iconHiBars3BottomLeft,
+  iconRiHome6Line,
+  iconIoInformationCircleOutline,
+  iconRiContactsBook3Line,
+  iconMdOutlinePrivacyTip,
+  iconMdOutlinePolicy,
 } from '../site-nav-v3/side-nav-react-icons';
 
 export type LINKTYPE = {
@@ -67,7 +78,7 @@ export const sidebarDataHome: SIDEBARTYPE[] = [
       { id: 1000202, name: 'Admin', link: '/dashboard/access-management/admin', icon: iconFaUserSecret },
       { id: 1000203, name: 'Product Manager', link: '/dashboard/access-management/product-manager', icon: iconTbUserSquareRounded },
       { id: 1000204, name: 'Order Manager', link: '/dashboard/access-management/order-manager', icon: iconTbUserShare },
-      { id: 1000204, name: 'Block Users', link: '/dashboard/access-management/block-users', icon: iconTbUserShare },
+      { id: 1000205, name: 'Block Users', link: '/dashboard/access-management/block-users', icon: iconTbUserShare },
     ],
   },
   {
@@ -103,25 +114,25 @@ export const sidebarDataHome: SIDEBARTYPE[] = [
   {
     id: 10006,
     name: 'Media',
-    icon: iconBiPieChartAlt,
+    icon: iconMdOutlinePermMedia,
     content: [
-      { id: 1000601, name: 'All', link: '/dashboard/media/all', icon: iconBiPieChartAlt },
-      { id: 1000602, name: 'Active', link: '/dashboard/media/active', icon: iconBiPieChartAlt },
-      { id: 1000603, name: 'Trash', link: '/dashboard/media/trash', icon: iconBiPieChartAlt },
+      { id: 1000601, name: 'All', link: '/dashboard/media/all', icon: iconMdOutlinePermMedia },
+      { id: 1000602, name: 'Active', link: '/dashboard/media/active', icon: iconGoFileMedia },
+      { id: 1000603, name: 'Trash', link: '/dashboard/media/trash', icon: iconLuTrash },
     ],
   },
   {
     id: 10007,
     name: 'Site Setting',
-    icon: iconBiPieChartAlt,
+    icon: iconVscSettingsGear,
     content: [
-      { id: 1000701, name: 'Header', link: '/dashboard/site-setting/header', icon: iconBiPieChartAlt },
-      { id: 1000702, name: 'Footer', link: '/dashboard/site-setting/footer', icon: iconBiPieChartAlt },
-      { id: 1000703, name: 'Home', link: '/dashboard/site-setting/home', icon: iconBiPieChartAlt },
-      { id: 1000704, name: 'Info', link: '/dashboard/site-setting/info', icon: iconBiPieChartAlt },
-      { id: 1000705, name: 'Contact', link: '/dashboard/site-setting/contact', icon: iconBiPieChartAlt },
-      { id: 1000706, name: 'Privacy Policy', link: '/dashboard/site-setting/privacy-policy', icon: iconBiPieChartAlt },
-      { id: 1000707, name: 'Terms and Condition', link: '/dashboard/site-setting/terms-and-condition', icon: iconBiPieChartAlt },
+      { id: 1000701, name: 'Header', link: '/dashboard/site-setting/header', icon: iconTbAlignBoxLeftMiddle },
+      { id: 1000702, name: 'Footer', link: '/dashboard/site-setting/footer', icon: iconHiBars3BottomLeft },
+      { id: 1000703, name: 'Home', link: '/dashboard/site-setting/home', icon: iconRiHome6Line },
+      { id: 1000704, name: 'Info', link: '/dashboard/site-setting/info', icon: iconIoInformationCircleOutline },
+      { id: 1000705, name: 'Contact', link: '/dashboard/site-setting/contact', icon: iconRiContactsBook3Line },
+      { id: 1000706, name: 'Privacy Policy', link: '/dashboard/site-setting/privacy-policy', icon: iconMdOutlinePrivacyTip },
+      { id: 1000707, name: 'Terms and Condition', link: '/dashboard/site-setting/terms-and-condition', icon: iconMdOutlinePolicy },
     ],
   },
 ];
