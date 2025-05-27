@@ -19,8 +19,6 @@ import { useGAuthUsersStore } from '../store/Store';
 import { baseIGAuthUsers } from '../store/StoreConstants';
 import { useGetGAuthUsersByIdQuery } from '../redux/rtk-Api';
 
-import { ViewRichText } from './view-rich-text/ViewRichText';
-
 const ViewNextComponents: React.FC = () => {
   const { isViewModalOpen, selectedGAuthUsers, toggleViewModal, setSelectedGAuthUsers } = useGAuthUsersStore();
   const { data: GAuthUsersData, refetch } = useGetGAuthUsersByIdQuery(selectedGAuthUsers?._id, { skip: !selectedGAuthUsers?._id });
