@@ -17,7 +17,8 @@ you have to change
 2. users_2_000___ -->> posts
 3. User_3_000___ -->> Post
 4. user_4_000___ -->> post
-6. ISelect_6_000___ -->> ISelect
-5. select_5_000___ -->> select
+5. ISelect_6_000___ -->> ISelect
+6. select_5_000___ -->> select
 
-6. a__1_1001_users__ [file and variable name] -->>  -->> posts
+7. a__1_1001_users__ [file and variable name] -->>  -->> posts
+8. tagTypeUsers_1_000___ -->> redux-tag-type -->> posts
